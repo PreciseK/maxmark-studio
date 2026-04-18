@@ -8,6 +8,7 @@ export type Project = {
   category: ProjectCategory;
   client?: string;
   year: number;
+  eyebrow?: string;
   muxPlaybackId: string;
   youtubeId?: string;
   aspectRatio: AspectRatio;

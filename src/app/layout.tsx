@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { Fraunces, Geist, Geist_Mono } from "next/font/google";
+import { Anton, Fraunces, Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
 import Navigation from "@/components/layout/Navigation";
+import Logo from "@/components/layout/Logo";
 import ConditionalFooter from "@/components/layout/ConditionalFooter";
 import "./globals.css";
+
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-anton",
+  display: "swap",
+});
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -46,11 +54,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${geistSans.variable} ${geistMono.variable}`}
+      className={`${anton.variable} ${fraunces.variable} ${geistSans.variable} ${geistMono.variable}`}
       style={{ backgroundColor: "var(--bg-base)" }}
     >
       <body style={{ backgroundColor: "var(--bg-base)", color: "var(--fg-primary)" }}>
         <SmoothScrollProvider>
+          <Logo />
           <Navigation />
           <main>{children}</main>
           <ConditionalFooter />

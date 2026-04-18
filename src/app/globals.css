@@ -7,6 +7,7 @@
   --fg-muted: #8a8a85;
   --fg-subtle: #4a4a47;
   --accent: #ff2e88;
+  --accent-highlight: #d4ff3e;
   --border: rgba(245, 245, 240, 0.08);
   --border-strong: rgba(245, 245, 240, 0.16);
   --nav-height: 72px;
@@ -19,6 +20,7 @@
   --color-fg-muted: var(--fg-muted);
   --color-fg-subtle: var(--fg-subtle);
   --color-accent: var(--accent);
+  --color-accent-highlight: var(--accent-highlight);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
 }

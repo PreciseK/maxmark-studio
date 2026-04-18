@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import PillButton from "@/components/ui/PillButton";
 import { cn } from "@/lib/cn";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 
 const navLinks = [
   { href: "/work", label: "Work" },
@@ -12,21 +14,10 @@ const navLinks = [
 ];
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setIsScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -34,129 +25,96 @@ export default function Navigation() {
 
   return (
     <>
-      <header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled ? "backdrop-blur-[12px]" : "",
-        )}
+      {/* ── Centre nav pill (desktop) ─────────────────────────────── */}
+      <nav
+        className="fixed left-1/2 z-50 hidden -translate-x-1/2 items-center lg:flex"
         style={{
-          backgroundColor: "rgba(10, 10, 10, 0.72)",
-          height: "var(--nav-height)",
-          borderBottom: isScrolled ? "1px solid var(--border)" : "none",
+          top: "24px",
+          borderRadius: "9999px",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          backgroundColor: "rgba(20, 20, 20, 0.55)",
+          border: "1px solid var(--border)",
+          padding: "12px 32px",
+          gap: "32px",
         }}
       >
-        <div
-          className="mx-auto flex h-full items-center justify-between"
-          style={{
-            maxWidth: "1440px",
-            paddingLeft: "clamp(24px, 3.33vw, 48px)",
-            paddingRight: "clamp(24px, 3.33vw, 48px)",
-          }}
-        >
-          {/* Logo */}
+        {navLinks.map((link) => (
           <Link
-            href="/"
-            className="relative z-10 shrink-0"
-            style={{ color: "var(--fg-primary)" }}
+            key={link.href}
+            href={link.href}
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              fontSize: "12px",
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: "var(--fg-muted)",
+              transition: "color 200ms ease",
+              textDecoration: "none",
+            }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLElement).style.color = "var(--fg-primary)")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLElement).style.color = "var(--fg-muted)")
+            }
           >
-            <span
-              style={{
-                fontFamily: "var(--font-fraunces)",
-                fontSize: "20px",
-                fontWeight: 500,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Maxmark Studio
-            </span>
+            {link.label}
           </Link>
+        ))}
+      </nav>
 
-          {/* Desktop Nav */}
-          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                style={{
-                  fontFamily: "var(--font-geist-mono)",
-                  fontSize: "12px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  color: "var(--fg-muted)",
-                  transition: "color 200ms ease",
-                }}
-                className="hover:text-[var(--fg-primary)]"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+      {/* ── Right CTA pill (desktop) ──────────────────────────────── */}
+      <div className="fixed right-6 z-50 hidden lg:block" style={{ top: "24px" }}>
+        <PillButton href="/contact" variant="glass" withArrow>
+          Get In Touch
+        </PillButton>
+      </div>
 
-          {/* CTA + hamburger */}
-          <div className="flex items-center gap-4">
-            <Link
-              href="/contact"
-              className="hidden items-center rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.1em] transition-all duration-300 lg:flex"
+      {/* ── Mobile hamburger pill ─────────────────────────────────── */}
+      <div
+        className="fixed right-6 z-50 flex lg:hidden"
+        style={{
+          top: "24px",
+          borderRadius: "9999px",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          backgroundColor: "rgba(20, 20, 20, 0.55)",
+          border: "1px solid var(--border)",
+          padding: "10px 16px",
+        }}
+      >
+        <button
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          className="flex flex-col items-center justify-center gap-[5px]"
+          style={{ width: "24px", height: "24px" }}
+        >
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className="block h-px w-5 origin-center"
               style={{
-                fontFamily: "var(--font-geist-mono)",
-                color: "var(--fg-primary)",
-                border: "1px solid var(--border-strong)",
+                backgroundColor: "var(--fg-primary)",
+                transition: "transform 300ms ease, opacity 300ms ease",
+                transform:
+                  i === 0 && menuOpen
+                    ? "translateY(6px) rotate(45deg)"
+                    : i === 2 && menuOpen
+                      ? "translateY(-6px) rotate(-45deg)"
+                      : "none",
+                opacity: i === 1 && menuOpen ? 0 : 1,
               }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.backgroundColor =
-                  "var(--fg-primary)";
-                (e.currentTarget as HTMLElement).style.color = "var(--bg-base)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.backgroundColor =
-                  "transparent";
-                (e.currentTarget as HTMLElement).style.color =
-                  "var(--fg-primary)";
-              }}
-            >
-              Get In Touch
-            </Link>
+            />
+          ))}
+        </button>
+      </div>
 
-            {/* Hamburger */}
-            <button
-              className="relative z-10 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
-              onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-            >
-              <span
-                className="h-px w-6 origin-center transition-all duration-300"
-                style={{
-                  backgroundColor: "var(--fg-primary)",
-                  transform: menuOpen
-                    ? "translateY(4px) rotate(45deg)"
-                    : "none",
-                }}
-              />
-              <span
-                className="h-px w-6 transition-all duration-300"
-                style={{
-                  backgroundColor: "var(--fg-primary)",
-                  opacity: menuOpen ? 0 : 1,
-                }}
-              />
-              <span
-                className="h-px w-6 origin-center transition-all duration-300"
-                style={{
-                  backgroundColor: "var(--fg-primary)",
-                  transform: menuOpen
-                    ? "translateY(-4px) rotate(-45deg)"
-                    : "none",
-                }}
-              />
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile overlay menu */}
+      {/* ── Mobile full-screen overlay ───────────────────────────── */}
       <div
         className={cn(
-          "fixed inset-0 z-40 flex flex-col items-start justify-center px-6 transition-all duration-500 lg:hidden",
+          "fixed inset-0 z-40 flex flex-col items-start justify-center px-8 lg:hidden",
+          "transition-all duration-500",
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
         style={{ backgroundColor: "var(--bg-base)" }}
@@ -167,38 +125,36 @@ export default function Navigation() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="block transition-all duration-300"
               style={{
-                fontFamily: "var(--font-fraunces)",
-                fontSize: "clamp(36px, 8vw, 64px)",
-                fontWeight: 500,
+                fontFamily: "var(--font-anton)",
+                fontSize: "clamp(40px, 10vw, 72px)",
+                textTransform: "uppercase",
+                letterSpacing: "-0.01em",
                 color: "var(--fg-primary)",
-                letterSpacing: "-0.02em",
+                lineHeight: 0.95,
+                textDecoration: "none",
+                transition: `transform 400ms cubic-bezier(${EASE_OUT_EXPO.join(",")}), opacity 400ms ease`,
                 transitionDelay: menuOpen ? `${i * 60}ms` : "0ms",
-                transform: menuOpen ? "none" : "translateY(16px)",
+                transform: menuOpen ? "none" : "translateY(20px)",
                 opacity: menuOpen ? 1 : 0,
               }}
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/contact"
-            onClick={() => setMenuOpen(false)}
-            className="mt-4 inline-flex items-center rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.1em]"
+          <div
             style={{
-              fontFamily: "var(--font-geist-mono)",
-              color: "var(--fg-primary)",
-              border: "1px solid var(--border-strong)",
-              width: "fit-content",
+              marginTop: "16px",
+              transition: `transform 400ms cubic-bezier(${EASE_OUT_EXPO.join(",")}), opacity 400ms ease`,
               transitionDelay: menuOpen ? `${navLinks.length * 60}ms` : "0ms",
-              transform: menuOpen ? "none" : "translateY(16px)",
+              transform: menuOpen ? "none" : "translateY(20px)",
               opacity: menuOpen ? 1 : 0,
-              transition: "transform 400ms ease, opacity 400ms ease",
             }}
           >
-            Get In Touch
-          </Link>
+            <PillButton href="/contact" variant="glass" withArrow onClick={() => setMenuOpen(false)}>
+              Get In Touch
+            </PillButton>
+          </div>
         </nav>
       </div>
     </>
