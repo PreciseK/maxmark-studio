@@ -11,12 +11,13 @@ export default function HeroStatement() {
   return (
     <section
       ref={ref}
-      className="flex min-h-[60vh] items-end"
+      className="flex items-end"
       style={{
+        minHeight: "100dvh",
         paddingLeft: "clamp(24px, 3.33vw, 48px)",
         paddingRight: "clamp(24px, 3.33vw, 48px)",
         paddingTop: "calc(var(--nav-height) + 80px)",
-        paddingBottom: "80px",
+        paddingBottom: "clamp(48px, 6vh, 96px)",
         maxWidth: "1440px",
         margin: "0 auto",
       }}

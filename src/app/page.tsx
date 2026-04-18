@@ -1,11 +1,11 @@
 import HeroStatement from "@/components/home/HeroStatement";
-import TileGrid from "@/components/home/TileGrid";
+import VideoScrollStack from "@/components/home/VideoScrollStack";
 
 export default function HomePage() {
   return (
     <>
       <HeroStatement />
-      <TileGrid />
+      <VideoScrollStack />
     </>
   );
 }

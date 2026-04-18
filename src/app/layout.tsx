@@ -3,7 +3,7 @@ import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
 import Navigation from "@/components/layout/Navigation";
-import Footer from "@/components/layout/Footer";
+import ConditionalFooter from "@/components/layout/ConditionalFooter";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -53,7 +53,7 @@ export default function RootLayout({
         <SmoothScrollProvider>
           <Navigation />
           <main>{children}</main>
-          <Footer />
+          <ConditionalFooter />
         </SmoothScrollProvider>
         {process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "true" && <Analytics />}
       </body>
