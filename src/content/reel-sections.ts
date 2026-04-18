@@ -14,7 +14,7 @@ export type ReelSectionData = {
 export const reelSections: ReelSectionData[] = [
   {
     id: "studio-hero",
-    muxPlaybackId: "PLACEHOLDER_STUDIO_REEL",
+    muxPlaybackId: "VCBESmjDlV4eRLTFzQ2j75KtN1XrKyV9sdwaAQXNv38",
     variant: "studio",
     eyebrow: "MAXMARK STUDIO — EST. 2024",
     title: "An AI-Native Production Studio",
@@ -24,7 +24,7 @@ export const reelSections: ReelSectionData[] = [
   },
   {
     id: "ritual-of-motion",
-    muxPlaybackId: "VCBESmjDlV4eRLTFzQ2j75KtN1XrKyV9sdwaAQXNv38",
+    muxPlaybackId: "q3ld4vu00a9IeOlIQFuj6jltcdbS1MM102yz2Of1n601t4",
     variant: "project",
     eyebrow: "Maxmark Studio Originals",
     title: "Ritual of Motion",

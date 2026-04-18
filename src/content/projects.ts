@@ -61,7 +61,7 @@ export const projects: Project[] = [
     category: "Music",
     client: "Ayra Starr",
     year: 2024,
-    muxPlaybackId: "PLACEHOLDER_MUX_ID_6",
+    muxPlaybackId: "q3ld4vu00a9IeOlIQFuj6jltcdbS1MM102yz2Of1n601t4",
     aspectRatio: "1:1",
     gridSize: "small",
     featured: false,
