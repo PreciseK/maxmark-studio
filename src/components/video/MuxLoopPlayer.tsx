@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import MuxPlayer from "@mux/mux-player-react";
 import { getMuxThumbnail } from "@/lib/mux";
 
@@ -8,27 +8,42 @@ interface MuxLoopPlayerProps {
   playbackId: string;
   title?: string;
   className?: string;
+  /** When true, pauses the video. When false/undefined, plays it. */
+  paused?: boolean;
 }
 
-// MuxPlayer accepts CSS custom properties (--controls etc.) via its own type
 type MuxStyleProps = React.CSSProperties & { [key: `--${string}`]: string | undefined };
 
-export default function MuxLoopPlayer({ playbackId, title, className }: MuxLoopPlayerProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+type MuxPlayerEl = HTMLVideoElement & { play(): Promise<void>; pause(): void };
 
+export default function MuxLoopPlayer({
+  playbackId,
+  title,
+  className,
+  paused,
+}: MuxLoopPlayerProps) {
   const isPlaceholder = playbackId.startsWith("PLACEHOLDER_");
   const posterUrl = getMuxThumbnail(playbackId, { time: 0, width: 1280 });
 
-  // Respect prefers-reduced-motion — render poster only
   const prefersReduced =
     typeof window !== "undefined"
       ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
       : false;
 
+  const muxPlayerRef = useRef<MuxPlayerEl | null>(null);
+
+  useEffect(() => {
+    if (!muxPlayerRef.current || isPlaceholder || prefersReduced) return;
+    if (paused) {
+      muxPlayerRef.current.pause();
+    } else {
+      muxPlayerRef.current.play().catch(() => {});
+    }
+  }, [paused, isPlaceholder, prefersReduced]);
+
   if (isPlaceholder || prefersReduced) {
     return (
       <div
-        ref={containerRef}
         className={className}
         style={{
           width: "100%",
@@ -52,8 +67,10 @@ export default function MuxLoopPlayer({ playbackId, title, className }: MuxLoopP
   };
 
   return (
-    <div ref={containerRef} className={className} style={{ width: "100%", height: "100%" }}>
+    <div className={className} style={{ width: "100%", height: "100%" }}>
       <MuxPlayer
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={muxPlayerRef as any}
         playbackId={playbackId}
         streamType="on-demand"
         autoPlay="muted"

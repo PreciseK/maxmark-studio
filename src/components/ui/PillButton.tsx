@@ -26,9 +26,9 @@ export default function PillButton({
   const [hovered, setHovered] = useState(false);
 
   const glassBase: React.CSSProperties = {
-    backdropFilter: "blur(20px)",
-    WebkitBackdropFilter: "blur(20px)",
-    backgroundColor: hovered ? "var(--fg-primary)" : "rgba(20, 20, 20, 0.55)",
+    backdropFilter: "blur(24px) saturate(180%)",
+    WebkitBackdropFilter: "blur(24px) saturate(180%)",
+    backgroundColor: hovered ? "var(--fg-primary)" : "rgba(8, 8, 8, 0.35)",
     border: "1px solid var(--border)",
     color: hovered ? "var(--bg-base)" : "var(--fg-primary)",
     transition: "background-color 300ms ease, color 300ms ease",

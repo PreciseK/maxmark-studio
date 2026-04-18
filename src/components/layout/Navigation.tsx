@@ -13,15 +13,26 @@ const navLinks = [
   { href: "/journal", label: "Journal" },
 ];
 
+const GLASS_IDLE = "rgba(8, 8, 8, 0.35)";
+const GLASS_SCROLLED = "rgba(8, 8, 8, 0.68)";
+const BACKDROP = "blur(24px) saturate(180%)";
+
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
+
+  const pillBg = scrolled ? GLASS_SCROLLED : GLASS_IDLE;
 
   return (
     <>
@@ -31,12 +42,13 @@ export default function Navigation() {
         style={{
           top: "24px",
           borderRadius: "9999px",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          backgroundColor: "rgba(20, 20, 20, 0.55)",
+          backdropFilter: BACKDROP,
+          WebkitBackdropFilter: BACKDROP,
+          backgroundColor: pillBg,
           border: "1px solid var(--border)",
           padding: "12px 32px",
           gap: "32px",
+          transition: "background-color 400ms ease",
         }}
       >
         {navLinks.map((link) => (
@@ -77,11 +89,12 @@ export default function Navigation() {
         style={{
           top: "24px",
           borderRadius: "9999px",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          backgroundColor: "rgba(20, 20, 20, 0.55)",
+          backdropFilter: BACKDROP,
+          WebkitBackdropFilter: BACKDROP,
+          backgroundColor: pillBg,
           border: "1px solid var(--border)",
           padding: "10px 16px",
+          transition: "background-color 400ms ease",
         }}
       >
         <button
