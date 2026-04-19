@@ -13,7 +13,7 @@ const navLinks = [
   { href: "/journal", label: "Journal" },
 ];
 
-const GLASS_SCROLLED = "rgba(30, 32, 28, 0.82)";
+const GLASS_SCROLLED = "rgba(255, 255, 255, 0.18)";
 const BACKDROP = "var(--glass-blur)";
 
 export default function Navigation() {
@@ -70,16 +70,12 @@ export default function Navigation() {
               fontSize: "12px",
               textTransform: "uppercase",
               letterSpacing: "0.12em",
-              color: "var(--fg-muted)",
-              transition: "color 200ms ease",
+              color: "var(--fg-primary)",
+              transition: "opacity 200ms ease",
               textDecoration: "none",
             }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.color = "var(--fg-primary)")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.color = "var(--fg-muted)")
-            }
+            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.7")}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
           >
             {link.label}
           </Link>
