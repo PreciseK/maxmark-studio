@@ -14,6 +14,9 @@ type PillButtonProps = {
   "aria-label"?: string;
 };
 
+const GLASS_TRANSITION =
+  "background-color 300ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1)";
+
 export default function PillButton({
   children,
   href,
@@ -26,12 +29,15 @@ export default function PillButton({
   const [hovered, setHovered] = useState(false);
 
   const glassBase: React.CSSProperties = {
-    backdropFilter: "blur(24px) saturate(180%)",
-    WebkitBackdropFilter: "blur(24px) saturate(180%)",
-    backgroundColor: hovered ? "var(--fg-primary)" : "rgba(8, 8, 8, 0.35)",
-    border: "1px solid var(--border)",
-    color: hovered ? "var(--bg-base)" : "var(--fg-primary)",
-    transition: "background-color 300ms ease, color 300ms ease",
+    backdropFilter: "var(--glass-blur)",
+    WebkitBackdropFilter: "var(--glass-blur)",
+    backgroundColor: hovered ? "var(--glass-bg-hover)" : "var(--glass-bg)",
+    border: `1px solid ${hovered ? "var(--glass-border-hover)" : "var(--glass-border)"}`,
+    color: "var(--fg-primary)",
+    boxShadow: hovered
+      ? "inset 0 1px 0 var(--glass-highlight-hover), 0 4px 16px rgba(0, 0, 0, 0.25)"
+      : "inset 0 1px 0 var(--glass-highlight), 0 1px 3px rgba(0, 0, 0, 0.2)",
+    transition: GLASS_TRANSITION,
   };
 
   const solidBase: React.CSSProperties = {
@@ -70,34 +76,38 @@ export default function PillButton({
     width: "28px",
     height: "28px",
     borderRadius: "9999px",
-    backgroundColor: hovered
-      ? variant === "glass"
-        ? "rgba(10,10,10,0.15)"
-        : "rgba(10,10,10,0.15)"
-      : "rgba(245,245,240,0.12)",
+    backgroundColor: hovered ? "rgba(245,245,240,0.22)" : "rgba(245,245,240,0.12)",
     flexShrink: 0,
-    transition: "background-color 300ms ease",
+    transition: "background-color 300ms cubic-bezier(0.22, 1, 0.36, 1)",
   };
 
-  const arrowColor = hovered && variant === "glass" ? "var(--bg-base)" : "var(--fg-primary)";
+  const arrowStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transform: hovered ? "translateX(2px)" : "translateX(0px)",
+    transition: "transform 300ms cubic-bezier(0.22, 1, 0.36, 1)",
+  };
 
   const inner = (
     <>
       <span style={textStyle}>{children}</span>
       {withArrow && (
         <span style={arrowCircleStyle}>
-          <svg
-            viewBox="0 0 12 12"
-            fill="none"
-            width="12"
-            height="12"
-            stroke={arrowColor}
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M2 6h8M6 2l4 4-4 4" />
-          </svg>
+          <span style={arrowStyle}>
+            <svg
+              viewBox="0 0 12 12"
+              fill="none"
+              width="12"
+              height="12"
+              stroke="var(--fg-primary)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M2 6h8M6 2l4 4-4 4" />
+            </svg>
+          </span>
         </span>
       )}
     </>

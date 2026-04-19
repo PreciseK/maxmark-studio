@@ -13,13 +13,13 @@ const navLinks = [
   { href: "/journal", label: "Journal" },
 ];
 
-const GLASS_IDLE = "rgba(8, 8, 8, 0.35)";
-const GLASS_SCROLLED = "rgba(8, 8, 8, 0.68)";
-const BACKDROP = "blur(24px) saturate(180%)";
+const GLASS_SCROLLED = "rgba(20, 20, 20, 0.75)";
+const BACKDROP = "var(--glass-blur)";
 
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [navHovered, setNavHovered] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8);
@@ -32,7 +32,11 @@ export default function Navigation() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const pillBg = scrolled ? GLASS_SCROLLED : GLASS_IDLE;
+  const pillBg = scrolled
+    ? GLASS_SCROLLED
+    : navHovered
+      ? "var(--glass-bg-hover)"
+      : "var(--glass-bg)";
 
   return (
     <>
@@ -45,11 +49,17 @@ export default function Navigation() {
           backdropFilter: BACKDROP,
           WebkitBackdropFilter: BACKDROP,
           backgroundColor: pillBg,
-          border: "1px solid var(--border)",
+          border: `1px solid ${navHovered && !scrolled ? "var(--glass-border-hover)" : "var(--glass-border)"}`,
+          boxShadow: navHovered && !scrolled
+            ? "inset 0 1px 0 var(--glass-highlight-hover), 0 4px 16px rgba(0,0,0,0.25)"
+            : "inset 0 1px 0 var(--glass-highlight), 0 1px 3px rgba(0,0,0,0.2)",
           padding: "12px 32px",
           gap: "32px",
-          transition: "background-color 400ms ease",
+          transition:
+            "background-color 300ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
+        onMouseEnter={() => setNavHovered(true)}
+        onMouseLeave={() => setNavHovered(false)}
       >
         {navLinks.map((link) => (
           <Link
@@ -92,7 +102,8 @@ export default function Navigation() {
           backdropFilter: BACKDROP,
           WebkitBackdropFilter: BACKDROP,
           backgroundColor: pillBg,
-          border: "1px solid var(--border)",
+          border: "1px solid var(--glass-border)",
+          boxShadow: "inset 0 1px 0 var(--glass-highlight), 0 1px 3px rgba(0,0,0,0.2)",
           padding: "10px 16px",
           transition: "background-color 400ms ease",
         }}

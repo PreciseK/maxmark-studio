@@ -11,6 +11,15 @@
   --border: rgba(245, 245, 240, 0.08);
   --border-strong: rgba(245, 245, 240, 0.16);
   --nav-height: 72px;
+
+  /* Shared glass tokens */
+  --glass-bg: rgba(20, 20, 20, 0.55);
+  --glass-bg-hover: rgba(30, 30, 30, 0.65);
+  --glass-border: rgba(245, 245, 240, 0.08);
+  --glass-border-hover: rgba(245, 245, 240, 0.18);
+  --glass-highlight: rgba(255, 255, 255, 0.06);
+  --glass-highlight-hover: rgba(255, 255, 255, 0.10);
+  --glass-blur: blur(16px);
 }
 
 @theme {

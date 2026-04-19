@@ -17,6 +17,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     });
 
     lenisRef.current = lenis;
+    (window as any).__lenis = lenis;
 
     let rafId: number;
     function raf(time: number) {
@@ -28,6 +29,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      delete (window as any).__lenis;
     };
   }, []);
 
