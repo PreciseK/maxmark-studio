@@ -13,7 +13,7 @@ const navLinks = [
   { href: "/journal", label: "Journal" },
 ];
 
-const GLASS_SCROLLED = "rgba(20, 20, 20, 0.55)";
+const GLASS_SCROLLED = "rgba(255, 255, 255, 0.14)";
 const BACKDROP = "var(--glass-blur)";
 
 export default function Navigation() {
@@ -51,8 +51,8 @@ export default function Navigation() {
           backgroundColor: pillBg,
           border: `1px solid ${navHovered && !scrolled ? "var(--glass-border-hover)" : "var(--glass-border)"}`,
           boxShadow: navHovered && !scrolled
-            ? "inset 0 1px 0 var(--glass-highlight-hover), 0 4px 16px rgba(0,0,0,0.25)"
-            : "inset 0 1px 0 var(--glass-highlight), 0 1px 3px rgba(0,0,0,0.2)",
+            ? "inset 0 1px 0 var(--glass-highlight-hover)"
+            : "inset 0 1px 0 var(--glass-highlight)",
           padding: "12px 32px",
           gap: "32px",
           transition:

@@ -35,8 +35,8 @@ export default function PillButton({
     border: `1px solid ${hovered ? "var(--glass-border-hover)" : "var(--glass-border)"}`,
     color: "var(--fg-primary)",
     boxShadow: hovered
-      ? "inset 0 1px 0 var(--glass-highlight-hover), 0 4px 16px rgba(0, 0, 0, 0.25)"
-      : "inset 0 1px 0 var(--glass-highlight), 0 1px 3px rgba(0, 0, 0, 0.2)",
+      ? "inset 0 1px 0 var(--glass-highlight-hover)"
+      : "inset 0 1px 0 var(--glass-highlight)",
     transition: GLASS_TRANSITION,
   };
 
