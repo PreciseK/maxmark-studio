@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import MuxLoopPlayer from "@/components/video/MuxLoopPlayer";
 import PillButton from "@/components/ui/PillButton";
-import TriangleRevealMask from "@/components/home/TriangleRevealMask";
+import TiltedSection from "@/components/home/TiltedSection";
 import { fadeUpVariants, staggerContainer, EASE_OUT_EXPO } from "@/lib/motion";
 import type { ReelSectionData } from "@/content/reel-sections";
 
@@ -24,32 +24,29 @@ export default function ReelSection({
   isActive,
 }: ReelSectionProps) {
   return (
-    <>
-      {/* Triangle-wipe reveal wrapper — bg-base shows as black outside the expanding triangle */}
-      <TriangleRevealMask isActive={isActive}>
-        {/* Full-bleed video */}
-        <MuxLoopPlayer
-          playbackId={muxPlaybackId}
-          title={title}
-          className="absolute inset-0"
-          paused={!isActive}
-        />
+    <TiltedSection>
+      {/* Full-bleed video */}
+      <MuxLoopPlayer
+        playbackId={muxPlaybackId}
+        title={title}
+        className="absolute inset-0"
+        paused={!isActive}
+      />
 
-        {/* Base overlay — uniform dark tint */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{ backgroundColor: "rgba(0,0,0,0.25)" }}
-        />
+      {/* Base overlay — uniform dark tint */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ backgroundColor: "rgba(0,0,0,0.25)" }}
+      />
 
-        {/* Bottom scrim — stronger gradient for text legibility */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 40%, transparent 70%)",
-          }}
-        />
-      </TriangleRevealMask>
+      {/* Bottom scrim — stronger gradient for text legibility */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 40%, transparent 70%)",
+        }}
+      />
 
       {variant === "studio" ? (
         <StudioOverlay
@@ -70,7 +67,7 @@ export default function ReelSection({
           isActive={isActive}
         />
       )}
-    </>
+    </TiltedSection>
   );
 }
 
