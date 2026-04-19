@@ -13,7 +13,7 @@ const navLinks = [
   { href: "/journal", label: "Journal" },
 ];
 
-const GLASS_SCROLLED = "rgba(255, 255, 255, 0.14)";
+const GLASS_SCROLLED = "rgba(30, 32, 28, 0.82)";
 const BACKDROP = "var(--glass-blur)";
 
 export default function Navigation() {

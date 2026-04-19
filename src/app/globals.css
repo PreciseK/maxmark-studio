@@ -13,13 +13,13 @@
   --nav-height: 72px;
 
   /* Shared glass tokens */
-  --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-bg-hover: rgba(255, 255, 255, 0.14);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-border-hover: rgba(255, 255, 255, 0.22);
-  --glass-highlight: rgba(255, 255, 255, 0.06);
-  --glass-highlight-hover: rgba(255, 255, 255, 0.10);
-  --glass-blur: blur(16px);
+  --glass-bg: rgba(30, 32, 28, 0.62);
+  --glass-bg-hover: rgba(38, 40, 35, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-hover: rgba(255, 255, 255, 0.24);
+  --glass-highlight: rgba(255, 255, 255, 0.07);
+  --glass-highlight-hover: rgba(255, 255, 255, 0.12);
+  --glass-blur: blur(20px);
 }
 
 @theme {
