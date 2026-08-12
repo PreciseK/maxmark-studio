@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Fraunces, Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
-import Navigation from "@/components/layout/Navigation";
-import Logo from "@/components/layout/Logo";
-import ConditionalFooter from "@/components/layout/ConditionalFooter";
 import "./globals.css";
 
 const anton = Anton({
@@ -54,16 +50,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${anton.variable} ${fraunces.variable} ${geistSans.variable} ${geistMono.variable}`}
       style={{ backgroundColor: "var(--bg-base)" }}
     >
       <body style={{ backgroundColor: "var(--bg-base)", color: "var(--fg-primary)" }}>
-        <SmoothScrollProvider>
-          <Logo />
-          <Navigation />
-          <main>{children}</main>
-          <ConditionalFooter />
-        </SmoothScrollProvider>
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var p=localStorage.getItem('maxmark-theme')||'system';var t=p==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;document.documentElement.dataset.theme=t;document.documentElement.dataset.themePreference=p}catch(e){}})()` }} />
+        {children}
         {process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "true" && <Analytics />}
       </body>
     </html>

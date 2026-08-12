@@ -17,14 +17,14 @@ export const reelSections: ReelSectionData[] = [
     muxPlaybackId: "VCBESmjDlV4eRLTFzQ2j75KtN1XrKyV9sdwaAQXNv38",
     variant: "studio",
     eyebrow: "MAXMARK STUDIO — EST. 2024",
-    title: "An AI-Native Production Studio",
+    title: "An AI-Native\nProduction Studio",
     strapline:
       "Maxmark Studio creates brand films, narratives, and music visuals with cinematic craft — at African market speed.",
-    primaryCta: { label: "Watch Showreel", href: "#reel-section-1" },
+    primaryCta: { label: "Watch Showreel", href: "#reel-section-ritual-of-motion" },
   },
   {
     id: "ritual-of-motion",
-    muxPlaybackId: "q3ld4vu00a9IeOlIQFuj6jltcdbS1MM102yz2Of1n601t4",
+    muxPlaybackId: "VCBESmjDlV4eRLTFzQ2j75KtN1XrKyV9sdwaAQXNv38",
     variant: "project",
     eyebrow: "Maxmark Studio Originals",
     title: "Ritual of Motion",
@@ -66,5 +66,14 @@ export const reelSections: ReelSectionData[] = [
     title: "Isoka",
     primaryCta: { label: "Watch Project", href: "/work/isoka" },
     secondaryCta: { label: "See All Narrative Work", href: "/work?category=narrative" },
+  },
+  {
+    id: "golden-hour",
+    muxPlaybackId: "q3ld4vu00a9IeOlIQFuj6jltcdbS1MM102yz2Of1n601t4",
+    variant: "project",
+    eyebrow: "Ayra Starr",
+    title: "Golden Hour",
+    primaryCta: { label: "Watch Project", href: "/work/golden-hour" },
+    secondaryCta: { label: "See All Music Work", href: "/work?category=music" },
   },
 ];

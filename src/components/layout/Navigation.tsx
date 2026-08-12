@@ -1,19 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import PillButton from "@/components/ui/PillButton";
 import { cn } from "@/lib/cn";
 import { EASE_OUT_EXPO } from "@/lib/motion";
+import ThemeToggle from "@/components/layout/ThemeToggle";
 
 const navLinks = [
   { href: "/work", label: "Work" },
   { href: "/studio", label: "Studio" },
-  { href: "/capabilities", label: "Capabilities" },
-  { href: "/journal", label: "Journal" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
 ];
 
-const GLASS_SCROLLED = "rgba(255, 255, 255, 0.18)";
 const BACKDROP = "var(--glass-blur)";
 
 export default function Navigation() {
@@ -22,39 +22,46 @@ export default function Navigation() {
   const [navHovered, setNavHovered] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8);
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.4);
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = menuOpen ? "hidden" : previousOverflow;
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
   }, [menuOpen]);
 
   const pillBg = scrolled
-    ? GLASS_SCROLLED
+    ? "var(--glass-bg-scrolled)"
     : navHovered
       ? "var(--glass-bg-hover)"
       : "var(--glass-bg)";
 
   return (
     <>
-      {/* ── Centre nav pill (desktop) ─────────────────────────────── */}
       <nav
-        className="fixed left-1/2 z-50 hidden -translate-x-1/2 items-center lg:flex"
+        aria-label="Primary navigation"
+        className="fixed z-50 hidden items-center lg:flex"
         style={{
           top: "24px",
+          left: "clamp(180px, 19.3vw, 278px)",
+          minHeight: "56px",
           borderRadius: "9999px",
           backdropFilter: BACKDROP,
           WebkitBackdropFilter: BACKDROP,
           backgroundColor: pillBg,
           border: `1px solid ${navHovered && !scrolled ? "var(--glass-border-hover)" : "var(--glass-border)"}`,
-          boxShadow: navHovered && !scrolled
-            ? "inset 0 1px 0 var(--glass-highlight-hover)"
-            : "inset 0 1px 0 var(--glass-highlight)",
-          padding: "12px 32px",
-          gap: "32px",
+          boxShadow:
+            navHovered && !scrolled
+              ? "inset 0 1px 0 var(--glass-highlight-hover), 0 12px 40px rgba(0,0,0,0.16)"
+              : "inset 0 1px 0 var(--glass-highlight), 0 12px 40px rgba(0,0,0,0.12)",
+          padding: "0 22px",
+          gap: "28px",
           transition:
             "background-color 300ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
@@ -62,99 +69,99 @@ export default function Navigation() {
         onMouseLeave={() => setNavHovered(false)}
       >
         {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            style={{
-              fontFamily: "var(--font-geist-mono)",
-              fontSize: "12px",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              color: "var(--fg-primary)",
-              transition: "opacity 200ms ease",
-              textDecoration: "none",
-            }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.7")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
-          >
+          <Link key={link.href} href={link.href} className="site-nav-link">
             {link.label}
           </Link>
         ))}
       </nav>
 
-      {/* ── Right CTA pill (desktop) ──────────────────────────────── */}
-      <div className="fixed right-6 z-50 hidden lg:block" style={{ top: "24px" }}>
+      <div className="fixed top-6 right-12 z-50 hidden items-center gap-2 lg:flex">
+        <ThemeToggle />
         <PillButton href="/contact" variant="glass" withArrow>
           Get In Touch
         </PillButton>
       </div>
 
-      {/* ── Mobile hamburger pill ─────────────────────────────────── */}
-      <div
-        className="fixed right-6 z-50 flex lg:hidden"
+      <button
+        type="button"
+        onClick={() => setMenuOpen((open) => !open)}
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-navigation"
+        className="fixed top-5 right-5 z-50 flex items-center lg:hidden"
         style={{
-          top: "24px",
+          minWidth: "88px",
+          minHeight: "40px",
+          justifyContent: "space-between",
+          gap: "8px",
           borderRadius: "9999px",
           backdropFilter: BACKDROP,
           WebkitBackdropFilter: BACKDROP,
           backgroundColor: pillBg,
           border: "1px solid var(--glass-border)",
-          boxShadow: "inset 0 1px 0 var(--glass-highlight), 0 1px 3px rgba(0,0,0,0.2)",
-          padding: "10px 16px",
-          transition: "background-color 400ms ease",
+          boxShadow: "inset 0 1px 0 var(--glass-highlight), 0 8px 24px rgba(0,0,0,0.18)",
+          padding: "5px 6px 5px 14px",
+          color: "var(--fg-primary)",
+          fontFamily: "var(--font-geist-mono)",
+          fontSize: "11px",
+          fontWeight: 600,
+          letterSpacing: "0.04em",
+          textTransform: "uppercase",
+          transition: "background-color 300ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       >
-        <button
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="flex flex-col items-center justify-center gap-[5px]"
-          style={{ width: "24px", height: "24px" }}
+        <span>{menuOpen ? "Close" : "Menu"}</span>
+        <span
+          className="flex h-7 w-7 flex-col items-center justify-center gap-[4px] rounded-full"
+          style={{ backgroundColor: "rgba(245,245,240,0.1)" }}
+          aria-hidden="true"
         >
-          {[0, 1, 2].map((i) => (
+          {[0, 1, 2].map((line) => (
             <span
-              key={i}
-              className="block h-px w-5 origin-center"
+              key={line}
+              className="block h-px w-3.5 origin-center"
               style={{
                 backgroundColor: "var(--fg-primary)",
                 transition: "transform 300ms ease, opacity 300ms ease",
                 transform:
-                  i === 0 && menuOpen
-                    ? "translateY(6px) rotate(45deg)"
-                    : i === 2 && menuOpen
-                      ? "translateY(-6px) rotate(-45deg)"
+                  line === 0 && menuOpen
+                    ? "translateY(5px) rotate(45deg)"
+                    : line === 2 && menuOpen
+                      ? "translateY(-5px) rotate(-45deg)"
                       : "none",
-                opacity: i === 1 && menuOpen ? 0 : 1,
+                opacity: line === 1 && menuOpen ? 0 : 1,
               }}
             />
           ))}
-        </button>
-      </div>
+        </span>
+      </button>
 
-      {/* ── Mobile full-screen overlay ───────────────────────────── */}
       <div
+        id="mobile-navigation"
         className={cn(
           "fixed inset-0 z-40 flex flex-col items-start justify-center px-8 lg:hidden",
           "transition-all duration-500",
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
         style={{ backgroundColor: "var(--bg-base)" }}
+        aria-hidden={!menuOpen}
       >
-        <nav className="flex w-full flex-col gap-6">
-          {navLinks.map((link, i) => (
+        <nav aria-label="Mobile navigation" className="flex w-full flex-col gap-6">
+          {navLinks.map((link, index) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
               style={{
                 fontFamily: "var(--font-anton)",
-                fontSize: "clamp(40px, 10vw, 72px)",
+                fontSize: "clamp(48px, 13vw, 72px)",
                 textTransform: "uppercase",
-                letterSpacing: "-0.01em",
+                letterSpacing: "-0.02em",
                 color: "var(--fg-primary)",
-                lineHeight: 0.95,
+                lineHeight: 0.92,
                 textDecoration: "none",
                 transition: `transform 400ms cubic-bezier(${EASE_OUT_EXPO.join(",")}), opacity 400ms ease`,
-                transitionDelay: menuOpen ? `${i * 60}ms` : "0ms",
+                transitionDelay: menuOpen ? `${index * 60}ms` : "0ms",
                 transform: menuOpen ? "none" : "translateY(20px)",
                 opacity: menuOpen ? 1 : 0,
               }}
@@ -171,7 +178,14 @@ export default function Navigation() {
               opacity: menuOpen ? 1 : 0,
             }}
           >
-            <PillButton href="/contact" variant="glass" withArrow onClick={() => setMenuOpen(false)}>
+            <ThemeToggle mobile />
+            <PillButton
+              href="/contact"
+              variant="glass"
+              size="large"
+              withArrow
+              onClick={() => setMenuOpen(false)}
+            >
               Get In Touch
             </PillButton>
           </div>

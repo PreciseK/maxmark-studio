@@ -1,15 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { subscribe } from "@/lib/actions/cms";
 
 export default function NewsletterInput() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [message, setMessage] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
-    setSubmitted(true);
+    const result = await subscribe(email);
+    setMessage(result.message);
+    setSubmitted(result.ok);
   }
 
   if (submitted) {
@@ -22,13 +26,13 @@ export default function NewsletterInput() {
           letterSpacing: "0.06em",
         }}
       >
-        You&apos;re in. Watch this space.
+        {message}
       </p>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
+    <form onSubmit={handleSubmit} className="flex gap-2" aria-label="Newsletter subscription">
       <input
         type="email"
         value={email}
@@ -64,6 +68,7 @@ export default function NewsletterInput() {
       >
         Join
       </button>
+      {message && !submitted && <span className="sr-only" aria-live="polite">{message}</span>}
     </form>
   );
 }

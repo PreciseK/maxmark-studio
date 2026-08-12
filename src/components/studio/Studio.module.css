@@ -1,0 +1,631 @@
+.page {
+  overflow: hidden;
+  background: var(--bg-base);
+  color: var(--fg-primary);
+}
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #0b0a09;
+  color: #f5f5f0;
+}
+
+.heroMedia {
+  position: absolute;
+  inset: -7%;
+  z-index: -3;
+  transform-origin: center;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.48) 43%, rgba(0, 0, 0, 0.12) 75%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.72) 0%, transparent 36%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.heroContent {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  width: min(930px, 76vw);
+  flex-direction: column;
+  justify-content: center;
+  padding: 116px 0 104px clamp(24px, 6.65vw, 96px);
+}
+
+.heroKicker,
+.eyebrow {
+  margin: 0;
+  color: var(--accent-highlight);
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heroContent h1 {
+  max-width: 840px;
+  margin: 20px 0 0;
+  font-family: var(--font-anton);
+  font-size: clamp(94px, 11.4vw, 164px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.78;
+  text-transform: uppercase;
+}
+
+.heroCopy {
+  max-width: 610px;
+  margin: 38px 0 0;
+  color: rgba(245, 245, 240, 0.9);
+  font-family: var(--font-geist-mono);
+  font-size: clamp(15px, 1.25vw, 18px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.55;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 0 20px;
+  border: 1px solid rgba(245, 245, 240, 0.22);
+  border-radius: 999px;
+  color: #f5f5f0;
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 240ms ease, border-color 240ms ease, color 240ms ease;
+}
+
+.primaryAction {
+  border-color: var(--accent-highlight);
+  background: var(--accent-highlight);
+  color: #090909;
+}
+
+.primaryAction:hover {
+  background: #e1ff70;
+}
+
+.secondaryAction:hover {
+  border-color: rgba(245, 245, 240, 0.55);
+  background: rgba(245, 245, 240, 0.08);
+}
+
+.heroFoot {
+  position: absolute;
+  right: clamp(24px, 3.35vw, 48px);
+  bottom: 28px;
+  left: clamp(24px, 3.35vw, 48px);
+  display: flex;
+  justify-content: space-between;
+  color: rgba(245, 245, 240, 0.55);
+  font-family: var(--font-geist-mono);
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statement {
+  padding: 164px clamp(24px, 6.65vw, 96px) 190px;
+}
+
+.statement h2 {
+  max-width: 1220px;
+  margin: 34px 0 0;
+  font-family: var(--font-anton);
+  font-size: clamp(72px, 10vw, 144px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.statementCopy {
+  display: grid;
+  max-width: 930px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 68px;
+  margin: 82px 0 0 auto;
+}
+
+.statementCopy p {
+  margin: 0;
+  color: var(--fg-muted);
+  font-family: var(--font-geist-mono);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.services {
+  border-top: 1px solid var(--border-strong);
+}
+
+.servicesHeading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 32px clamp(24px, 3.35vw, 48px) 42px;
+}
+
+.servicesHeading p {
+  margin: 0;
+  font-family: var(--font-anton);
+  font-size: clamp(40px, 4.4vw, 64px);
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.servicesHeading span {
+  color: var(--fg-muted);
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.service {
+  display: grid;
+  min-height: 720px;
+  grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.75fr);
+  border-top: 1px solid var(--border-strong);
+}
+
+.service:nth-of-type(even) {
+  grid-template-columns: minmax(360px, 0.75fr) minmax(0, 1.45fr);
+}
+
+.service:nth-of-type(even) .serviceMedia {
+  order: 2;
+}
+
+.serviceMedia {
+  position: relative;
+  min-height: 680px;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.serviceImage {
+  object-fit: cover;
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 900ms ease;
+}
+
+.service:hover .serviceImage {
+  filter: saturate(1.08);
+  transform: scale(1.035);
+}
+
+.serviceNumber {
+  position: absolute;
+  top: 26px;
+  left: 28px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(245, 245, 240, 0.28);
+  border-radius: 50%;
+  background: rgba(5, 5, 5, 0.42);
+  color: var(--fg-primary);
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  backdrop-filter: blur(14px);
+}
+
+.serviceCopy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px clamp(36px, 5vw, 76px);
+}
+
+.serviceEyebrow {
+  margin: 0;
+  color: var(--accent-highlight);
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.serviceCopy h2 {
+  margin: 20px 0 0;
+  font-family: var(--font-anton);
+  font-size: clamp(76px, 8vw, 116px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+.serviceCopy > p:not(.serviceEyebrow) {
+  max-width: 430px;
+  margin: 40px 0 0;
+  color: var(--fg-muted);
+  font-family: var(--font-geist-mono);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.serviceCopy a {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 16px;
+  margin-top: 36px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--border-strong);
+  color: var(--fg-primary);
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color 220ms ease, color 220ms ease;
+}
+
+.serviceCopy a:hover {
+  border-color: var(--accent-highlight);
+  color: var(--accent-highlight);
+}
+
+.promiseSection {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 88px;
+  padding: 180px clamp(24px, 6.65vw, 96px);
+}
+
+.promiseHeader {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+
+.promiseHeader h2,
+.bookingIntro h2 {
+  max-width: 620px;
+  margin: 28px 0 0;
+  font-family: var(--font-anton);
+  font-size: clamp(62px, 7vw, 100px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.promiseList {
+  border-top: 1px solid var(--border-strong);
+}
+
+.promiseItem {
+  display: grid;
+  grid-template-columns: 54px minmax(180px, 0.7fr) minmax(220px, 1fr);
+  gap: 24px;
+  padding: 40px 0 56px;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.promiseItem span,
+.bookingStep > span {
+  color: var(--accent-highlight);
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+}
+
+.promiseItem h3,
+.bookingStep h3 {
+  margin: 0;
+  font-family: var(--font-geist-sans);
+  font-size: 22px;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+}
+
+.promiseItem p,
+.bookingStep p {
+  margin: 0;
+  color: var(--fg-muted);
+  font-family: var(--font-geist-mono);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.typeMarquee {
+  overflow: hidden;
+  padding: 38px 0 48px;
+  border-top: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+  color: var(--accent-highlight);
+}
+
+.typeMarquee div {
+  width: max-content;
+  font-family: var(--font-anton);
+  font-size: clamp(86px, 11vw, 158px);
+  letter-spacing: -0.035em;
+  line-height: 0.8;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: studioMarquee 24s linear infinite;
+}
+
+.bookingSection {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 96px;
+  padding: 180px clamp(24px, 6.65vw, 96px) 200px;
+}
+
+.bookingNote {
+  max-width: 500px;
+  margin: 42px 0 0;
+  color: var(--fg-muted);
+  font-family: var(--font-geist-mono);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.bookingSteps {
+  counter-reset: booking;
+  border-top: 1px solid var(--border-strong);
+}
+
+.bookingStep {
+  display: grid;
+  grid-template-columns: 52px minmax(190px, 0.8fr) minmax(220px, 1fr);
+  gap: 24px;
+  padding: 38px 0 52px;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.bookingCta {
+  position: relative;
+  display: flex;
+  min-height: 520px;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 72px clamp(24px, 5vw, 72px);
+  background: var(--accent-highlight);
+  color: #070707;
+  text-decoration: none;
+}
+
+.bookingCtaLabel {
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bookingCtaTitle {
+  max-width: 1120px;
+  margin-top: 22px;
+  font-family: var(--font-anton);
+  font-size: clamp(110px, 16.5vw, 238px);
+  letter-spacing: -0.045em;
+  line-height: 0.78;
+  text-transform: uppercase;
+}
+
+.bookingCtaArrow {
+  position: absolute;
+  right: clamp(24px, 5vw, 72px);
+  bottom: 58px;
+  font-size: clamp(58px, 7vw, 104px);
+  line-height: 1;
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bookingCta:hover .bookingCtaArrow {
+  transform: translate(12px, -12px);
+}
+
+@keyframes studioMarquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 900px) {
+  .heroContent {
+    width: 100%;
+    justify-content: flex-end;
+    padding: 124px 20px 104px;
+  }
+
+  .heroContent h1 {
+    font-size: clamp(76px, 26vw, 108px);
+    line-height: 0.8;
+  }
+
+  .heroCopy {
+    max-width: 355px;
+    margin-top: 28px;
+    font-size: 14px;
+  }
+
+  .heroActions {
+    margin-top: 24px;
+  }
+
+  .heroFoot {
+    bottom: 22px;
+    font-size: 8px;
+  }
+
+  .heroFoot span:last-child {
+    display: none;
+  }
+
+  .heroScrim {
+    background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.34) 68%, rgba(0, 0, 0, 0.2) 100%),
+      rgba(0, 0, 0, 0.08);
+  }
+
+  .heroImage {
+    object-position: 63% center;
+  }
+
+  .statement {
+    padding: 112px 20px 126px;
+  }
+
+  .statement h2 {
+    margin-top: 24px;
+    font-size: clamp(60px, 18vw, 78px);
+  }
+
+  .statementCopy {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 58px;
+  }
+
+  .statementCopy p {
+    font-size: 13px;
+  }
+
+  .servicesHeading {
+    display: block;
+    padding: 30px 20px 34px;
+  }
+
+  .servicesHeading p {
+    font-size: 42px;
+  }
+
+  .servicesHeading span {
+    display: block;
+    margin-top: 12px;
+  }
+
+  .service,
+  .service:nth-of-type(even) {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .service:nth-of-type(even) .serviceMedia {
+    order: 0;
+  }
+
+  .serviceMedia {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .serviceCopy {
+    min-height: 420px;
+    padding: 56px 20px 66px;
+  }
+
+  .serviceCopy h2 {
+    font-size: clamp(70px, 22vw, 94px);
+  }
+
+  .serviceCopy > p:not(.serviceEyebrow) {
+    margin-top: 30px;
+    font-size: 13px;
+  }
+
+  .promiseSection,
+  .bookingSection {
+    display: block;
+    padding: 112px 20px 126px;
+  }
+
+  .promiseHeader {
+    position: static;
+  }
+
+  .promiseHeader h2,
+  .bookingIntro h2 {
+    font-size: clamp(58px, 17vw, 76px);
+  }
+
+  .promiseList,
+  .bookingSteps {
+    margin-top: 64px;
+  }
+
+  .promiseItem,
+  .bookingStep {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 8px 16px;
+    padding: 30px 0 38px;
+  }
+
+  .promiseItem p,
+  .bookingStep p {
+    grid-column: 2;
+    margin-top: 10px;
+  }
+
+  .typeMarquee {
+    padding: 26px 0 32px;
+  }
+
+  .typeMarquee div {
+    font-size: 82px;
+  }
+
+  .bookingCta {
+    min-height: 360px;
+    padding: 54px 20px;
+  }
+
+  .bookingCtaTitle {
+    max-width: 340px;
+    font-size: clamp(84px, 29vw, 116px);
+  }
+
+  .bookingCtaArrow {
+    right: 20px;
+    bottom: 26px;
+    font-size: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typeMarquee div {
+    animation: none;
+  }
+}

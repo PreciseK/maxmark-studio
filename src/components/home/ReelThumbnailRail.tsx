@@ -21,76 +21,57 @@ export default function ReelThumbnailRail({
   onThumbnailClick,
 }: ReelThumbnailRailProps) {
   return (
-    <div
-      className="hidden lg:flex"
-      style={{
-        position: "fixed",
-        top: "50%",
-        left: "24px",
-        transform: "translateY(-50%)",
-        zIndex: 30,
-        flexDirection: "column",
-        gap: "8px",
-      }}
-      role="list"
+    <nav
+      className="fixed top-1/2 left-12 z-30 hidden -translate-y-1/2 lg:block"
       aria-label="Reel navigation"
     >
-      {sections.map((section, i) => {
-        const isActive = i === activeIndex;
-        const isPlaceholder = section.muxPlaybackId.startsWith("PLACEHOLDER_");
-        const thumbUrl = isPlaceholder
-          ? null
-          : getMuxThumbnail(section.muxPlaybackId, { width: 200, height: 140 });
+      <ol className="m-0 flex list-none flex-col gap-3 p-0">
+        {sections.map((section, index) => {
+          const isActive = index === activeIndex;
+          const isPlaceholder = section.muxPlaybackId.startsWith("PLACEHOLDER_");
+          const thumbUrl = isPlaceholder
+            ? null
+            : getMuxThumbnail(section.muxPlaybackId, { width: 200, height: 120 });
 
-        return (
-          <button
-            key={section.id}
-            role="listitem"
-            aria-label={`Go to ${section.title}`}
-            aria-current={isActive ? "true" : "false"}
-            onClick={() => onThumbnailClick(i)}
-            style={{
-              width: "72px",
-              height: "48px",
-              borderRadius: "6px",
-              overflow: "hidden",
-              flexShrink: 0,
-              padding: 0,
-              cursor: "pointer",
-              position: "relative",
-              outline: "none",
-              border: "none",
-              transition: "opacity 200ms ease, box-shadow 200ms ease, filter 200ms ease",
-              opacity: isActive ? 1 : 0.55,
-              boxShadow: isActive
-                ? "0 0 0 2px #0a0a0a, 0 0 0 4px var(--accent-highlight)"
-                : "none",
-              filter: isActive
-                ? "drop-shadow(0 0 6px rgba(212,255,62,0.45))"
-                : "none",
-            }}
-            onMouseEnter={(e) => {
-              if (!isActive) (e.currentTarget as HTMLElement).style.opacity = "0.9";
-            }}
-            onMouseLeave={(e) => {
-              if (!isActive) (e.currentTarget as HTMLElement).style.opacity = "0.55";
-            }}
-          >
-            {thumbUrl ? (
-              <Image
-                src={thumbUrl}
-                alt={section.title}
-                fill
-                sizes="72px"
-                style={{ objectFit: "cover" }}
-                unoptimized
-              />
-            ) : (
-              <div style={{ width: "100%", height: "100%", backgroundColor: "var(--bg-elevated)" }} />
-            )}
-          </button>
-        );
-      })}
-    </div>
+          return (
+            <li key={section.id}>
+              <button
+                type="button"
+                aria-label={`Go to ${section.title.replace("\n", " ")}`}
+                aria-current={isActive ? "true" : undefined}
+                onClick={() => onThumbnailClick(index)}
+                className="relative block h-12 w-20 shrink-0 cursor-pointer overflow-hidden rounded-[5px] p-0"
+                style={{
+                  border: isActive ? "2px solid var(--accent-highlight)" : "2px solid transparent",
+                  opacity: isActive ? 1 : 0.56,
+                  filter: isActive ? "none" : "saturate(0.82)",
+                  transition:
+                    "opacity 220ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms cubic-bezier(0.22, 1, 0.36, 1), filter 220ms cubic-bezier(0.22, 1, 0.36, 1)",
+                }}
+                onMouseEnter={(event) => {
+                  if (!isActive) event.currentTarget.style.opacity = "0.9";
+                }}
+                onMouseLeave={(event) => {
+                  if (!isActive) event.currentTarget.style.opacity = "0.56";
+                }}
+              >
+                {thumbUrl ? (
+                  <Image
+                    src={thumbUrl}
+                    alt=""
+                    fill
+                    sizes="80px"
+                    style={{ objectFit: "cover" }}
+                    unoptimized
+                  />
+                ) : (
+                  <span className="bg-bg-elevated block h-full w-full" />
+                )}
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
   );
 }

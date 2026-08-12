@@ -3,11 +3,9 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
-const MAX_TILT_DEGREES = 12;
-const EDGE_SCALE = 0.88;
-const EDGE_OPACITY = 0.6;
-const DEPTH_TRANSLATE = -200;
-const PERSPECTIVE = 1200;
+const MAX_ROTATION_DEGREES = 7;
+const EDGE_SCALE = 1.3;
+const EDGE_OFFSET = 180;
 
 type TiltedSectionProps = {
   children: React.ReactNode;
@@ -22,18 +20,13 @@ export default function TiltedSection({ children }: TiltedSectionProps) {
     offset: ["start end", "end start"],
   });
 
-  const rotateX = useTransform(
+  const rotate = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    [MAX_TILT_DEGREES, 0, -MAX_TILT_DEGREES],
+    [MAX_ROTATION_DEGREES, 0, -MAX_ROTATION_DEGREES],
   );
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [EDGE_SCALE, 1, EDGE_SCALE]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [EDGE_OPACITY, 1, EDGE_OPACITY]);
-  const translateZ = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    [DEPTH_TRANSLATE, 0, DEPTH_TRANSLATE],
-  );
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [-EDGE_OFFSET, 0, EDGE_OFFSET]);
 
   if (prefersReducedMotion) {
     return (
@@ -44,19 +37,14 @@ export default function TiltedSection({ children }: TiltedSectionProps) {
   }
 
   return (
-    <div
-      ref={ref}
-      className="relative h-full w-full"
-      style={{ perspective: `${PERSPECTIVE}px`, perspectiveOrigin: "center center" }}
-    >
+    <div ref={ref} className="relative h-full w-full">
       <motion.div
         className="relative h-full w-full will-change-transform"
         style={{
-          rotateX,
+          rotate,
           scale,
-          opacity,
-          translateZ,
-          transformStyle: "preserve-3d",
+          y,
+          transformOrigin: "center center",
         }}
       >
         {children}

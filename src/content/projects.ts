@@ -32,7 +32,7 @@ export const projects: Project[] = [
     muxPlaybackId: "zFaTv2EtIEW3dzkNTxBzHvcCJPEG009AR61Ng8h2RPGI",
     aspectRatio: "16:9",
     gridSize: "medium",
-    featured: false,
+    featured: true,
   },
   {
     slug: "heritage-drop",
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     muxPlaybackId: "00uZ5D3R3y7XM7J67GBZQCBe89j02E1uL01HZ8MW2ocBUc",
     aspectRatio: "16:9",
     gridSize: "medium",
-    featured: false,
+    featured: true,
   },
   {
     slug: "isoka",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     muxPlaybackId: "KN702xowBcoN1Qq7NKudjBv1l02HMkW2QMkHAlmY7jsak",
     aspectRatio: "1:1",
     gridSize: "small",
-    featured: false,
+    featured: true,
   },
   {
     slug: "golden-hour",
@@ -64,6 +64,6 @@ export const projects: Project[] = [
     muxPlaybackId: "q3ld4vu00a9IeOlIQFuj6jltcdbS1MM102yz2Of1n601t4",
     aspectRatio: "1:1",
     gridSize: "small",
-    featured: false,
+    featured: true,
   },
 ];

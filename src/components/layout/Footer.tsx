@@ -91,9 +91,10 @@ export default function Footer() {
               {[
                 { href: "/work", label: "Work" },
                 { href: "/studio", label: "Studio" },
-                { href: "/capabilities", label: "Capabilities" },
-                { href: "/journal", label: "Journal" },
+                { href: "/about", label: "About" },
+                { href: "/blog", label: "Blog" },
                 { href: "/contact", label: "Contact" },
+                { href: "/booking", label: "Book the Studio" },
               ].map((link) => (
                 <Link
                   key={link.href}

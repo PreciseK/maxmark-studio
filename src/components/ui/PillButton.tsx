@@ -9,6 +9,7 @@ type PillButtonProps = {
   href?: string;
   onClick?: () => void;
   variant?: "glass" | "solid";
+  size?: "default" | "large";
   withArrow?: boolean;
   className?: string;
   "aria-label"?: string;
@@ -22,6 +23,7 @@ export default function PillButton({
   href,
   onClick,
   variant = "glass",
+  size = "default",
   withArrow = false,
   className,
   "aria-label": ariaLabel,
@@ -53,11 +55,18 @@ export default function PillButton({
     cursor: "pointer",
     userSelect: "none",
     textDecoration: "none",
-    paddingTop: "12px",
-    paddingBottom: "12px",
-    paddingLeft: "20px",
-    paddingRight: withArrow ? "6px" : "20px",
-    gap: withArrow ? "12px" : undefined,
+    minHeight: size === "large" ? "64px" : "54px",
+    paddingTop: size === "large" ? "16px" : "12px",
+    paddingBottom: size === "large" ? "16px" : "12px",
+    paddingLeft: size === "large" ? "32px" : "20px",
+    paddingRight: withArrow
+      ? size === "large"
+        ? "8px"
+        : "6px"
+      : size === "large"
+        ? "32px"
+        : "20px",
+    gap: withArrow ? (size === "large" ? "16px" : "12px") : undefined,
     ...(variant === "glass" ? glassBase : solidBase),
   };
 
@@ -73,8 +82,8 @@ export default function PillButton({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: "28px",
-    height: "28px",
+    width: size === "large" ? "30px" : "28px",
+    height: size === "large" ? "30px" : "28px",
     borderRadius: "9999px",
     backgroundColor: hovered ? "rgba(245,245,240,0.22)" : "rgba(245,245,240,0.12)",
     flexShrink: 0,
@@ -122,6 +131,8 @@ export default function PillButton({
         aria-label={ariaLabel}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        onFocus={() => setHovered(true)}
+        onBlur={() => setHovered(false)}
       >
         {inner}
       </Link>
@@ -134,8 +145,11 @@ export default function PillButton({
       style={containerStyle}
       className={cn(className)}
       aria-label={ariaLabel}
+      type="button"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
     >
       {inner}
     </button>

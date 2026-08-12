@@ -73,11 +73,11 @@ export default function MuxLoopPlayer({
         ref={muxPlayerRef as any}
         playbackId={playbackId}
         streamType="on-demand"
-        autoPlay="muted"
+        autoPlay={paused ? false : "muted"}
         loop
         muted
         playsInline
-        preload="auto"
+        preload={paused ? "metadata" : "auto"}
         nohotkeys
         disableCookies
         title={title}

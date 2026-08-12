@@ -1,0 +1,31 @@
+.backdrop { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: rgba(0,0,0,.76); opacity: 0; pointer-events: none; backdrop-filter: blur(18px); transition: opacity var(--modal-open-dur) var(--modal-ease); }
+.backdropOpen { opacity: 1; pointer-events: auto; }
+.backdropClosing { opacity: 0; transition-duration: var(--modal-close-dur); }
+.modal { position: relative; width: calc(100vw - 40px); height: calc(100svh - 40px); overflow: hidden; background: #080808; color: #f5f5f0; }
+.topbar { position: absolute; z-index: 5; top: 0; right: 0; left: 0; display: flex; align-items: center; justify-content: space-between; padding: 22px 26px; font-family: var(--font-geist-mono); font-size: 9px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.topbar button { display: inline-flex; align-items: center; gap: 14px; border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; text-transform: inherit; }
+.topbar i { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; font-family: var(--font-geist-sans); font-size: 22px; font-style: normal; font-weight: 300; }
+.stage { position: relative; display: flex; height: min(56svh,650px); align-items: center; justify-content: center; padding-top: 66px; }
+.activeMedia,.side { position: absolute; overflow: hidden; border: 0; padding: 0; background: #171717; }
+.activeMedia { z-index: 2; width: min(58vw,840px); aspect-ratio: 16/10; transform: rotate(-1.25deg); animation: activeSpaceIn 420ms var(--modal-ease) both; }
+.activeMedia img,.side img { object-fit: cover; }
+.side { z-index: 1; width: min(29vw,420px); aspect-ratio: 4/3; cursor: pointer; filter: brightness(.55) saturate(.72); opacity: .72; transition: filter 250ms ease, opacity 250ms ease, transform 420ms var(--modal-ease); }
+.side:hover { filter: brightness(.78) saturate(.94); opacity: .92; }
+.previous { left: -3vw; transform: rotate(-7deg); }
+.next { right: -3vw; transform: rotate(7deg); }
+.previous:hover { transform: translateX(12px) rotate(-5deg); }
+.next:hover { transform: translateX(-12px) rotate(5deg); }
+.caption { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(250px,.7fr) auto; gap: 40px; align-items: end; padding: 18px clamp(24px,5vw,72px) 0; }
+.caption span,.caption p { font-family: var(--font-geist-mono); }
+.caption>div>span { color: #9a9a94; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.caption h2 { margin: 8px 0 0; font-family: var(--font-anton); font-size: clamp(58px,7vw,100px); font-weight: 400; letter-spacing: -.035em; line-height: .82; text-transform: uppercase; }
+.caption p { max-width: 410px; margin: 0; color: #aaa9a3; font-size: 11px; line-height: 1.55; }
+.caption>a { display: inline-flex; align-items: center; gap: 14px; padding-bottom: 7px; border-bottom: 1px solid rgba(255,255,255,.28); color: inherit; font-family: var(--font-geist-mono); font-size: 9px; font-weight: 700; text-decoration: none; text-transform: uppercase; }
+.controls { position: absolute; right: 0; bottom: 20px; left: 0; display: flex; align-items: center; justify-content: center; gap: 20px; }
+.controls button { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; background: transparent; color: inherit; cursor: pointer; }
+.controls>div { display: flex; gap: 5px; }
+.controls>div span { display: block; width: 18px; height: 2px; background: #555; transition: width 220ms ease, background-color 220ms ease; }
+.controls>div .activeDot { width: 34px; background: #d4ff3e; }
+@keyframes activeSpaceIn { from { opacity: 0; transform: translateY(18px) rotate(-1.25deg) scale(.985); } }
+@media (max-width: 800px) { .modal { width: 100vw; height: 100svh; } .stage { height: 50svh; padding-top: 64px; } .activeMedia { width: calc(100vw - 32px); aspect-ratio: 4/3; transform: none; } .side { display: none; } .caption { display: block; padding: 14px 20px 0; } .caption h2 { font-size: 65px; } .caption p { margin-top: 18px; font-size: 10px; } .caption>a { margin-top: 20px; } .controls { bottom: 16px; } }
+@media (prefers-reduced-motion: reduce) { .backdrop,.activeMedia,.side { animation: none; transition: none !important; } }

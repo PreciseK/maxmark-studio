@@ -1,0 +1,64 @@
+.page { overflow: hidden; background: var(--bg-base); color: var(--fg-primary); }
+.hero { min-height: 930px; padding: 170px clamp(22px,6.65vw,96px) 90px; }
+.eyebrow,.sectionLabel { margin: 0; color: #a1a19b; font-family: var(--font-geist-mono); font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.hero h1 { margin: 72px 0 0; font-family: var(--font-anton); font-size: clamp(110px,18vw,258px); font-weight: 400; letter-spacing: -.05em; line-height: .72; text-transform: uppercase; animation: contactTitleIn .9s cubic-bezier(.22,1,.36,1) both; }
+.heroCopy { max-width: 700px; margin: 94px 0 0 auto; font-family: var(--font-fraunces); font-size: clamp(30px,3.5vw,51px); letter-spacing: -.04em; line-height: 1.02; }
+.emailHero { display: flex; align-items: center; justify-content: space-between; margin-top: 72px; padding: 28px 0; border-top: 1px solid rgba(255,255,255,.25); border-bottom: 1px solid rgba(255,255,255,.25); color: inherit; font-family: var(--font-geist-mono); font-size: clamp(15px,1.6vw,23px); text-decoration: none; transition: color .25s ease; }
+.emailHero:hover { color: #d4ff3e; }
+.emailHero span { font-size: 1.8em; }
+.contactGrid { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); border-top: 1px solid rgba(255,255,255,.22); }
+.directory,.formSection { padding: clamp(74px,8vw,120px) clamp(22px,6.65vw,96px); }
+.directory { border-right: 1px solid rgba(255,255,255,.22); }
+.emailList { margin-top: 58px; }
+.emailList a { position: relative; display: block; padding: 30px 64px 30px 0; border-top: 1px solid rgba(255,255,255,.18); color: inherit; text-decoration: none; }
+.emailList a:last-child { border-bottom: 1px solid rgba(255,255,255,.18); }
+.emailList span { color: #85857f; font-family: var(--font-geist-mono); font-size: 8px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.emailList strong { display: block; margin-top: 12px; font-family: var(--font-geist-sans); font-size: clamp(18px,1.7vw,25px); font-weight: 600; letter-spacing: -.04em; transition: color .25s ease; }
+.emailList p { margin: 8px 0 0; color: #93938d; font-family: var(--font-geist-mono); font-size: 10px; }
+.emailList i { position: absolute; top: 50%; right: 4px; font-size: 25px; font-style: normal; transform: translateY(-50%); transition: transform .3s ease; }
+.emailList a:hover strong { color: #d4ff3e; }
+.emailList a:hover i { transform: translate(6px,calc(-50% - 6px)); }
+.availability { display: flex; gap: 15px; margin-top: 62px; align-items: flex-start; }
+.statusDot { width: 9px; height: 9px; flex: none; margin-top: 3px; border-radius: 50%; background: #d4ff3e; box-shadow: 0 0 16px rgba(212,255,62,.7); }
+.availability strong { display: block; font-family: var(--font-geist-mono); font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
+.availability p { margin: 8px 0 0; color: #878781; font-family: var(--font-geist-mono); font-size: 9px; line-height: 1.6; text-transform: uppercase; }
+.formHeading h2 { max-width: 650px; margin: 38px 0 0; font-family: var(--font-anton); font-size: clamp(58px,6vw,88px); font-weight: 400; letter-spacing: -.04em; line-height: .88; text-transform: uppercase; }
+.form { margin-top: 80px; }
+.inquiryTypes { margin: 0 0 58px; padding: 0; border: 0; }
+.inquiryTypes legend,.form label > span { display: block; margin-bottom: 14px; color: #85857f; font-family: var(--font-geist-mono); font-size: 8px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.inquiryTypes > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.inquiryTypes label { padding: 12px 16px; border: 1px solid rgba(255,255,255,.24); border-radius: 999px; cursor: pointer; font-family: var(--font-geist-mono); font-size: 9px; font-weight: 700; text-transform: uppercase; transition: background .2s,color .2s,border-color .2s; }
+.inquiryTypes input { position: absolute; opacity: 0; }
+.inquiryTypes .selectedType { border-color: #d4ff3e; background: #d4ff3e; color: #090909; }
+.fieldGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 26px; }
+.fullField { display: block; margin-top: 38px; }
+.form input,.form textarea { width: 100%; border: 0; border-bottom: 1px solid var(--border-strong); border-radius: 0; outline: 0; background: transparent; color: var(--fg-primary); padding: 0 0 16px; font-family: var(--font-geist-sans); font-size: 18px; transition: border-color .25s ease; }
+.form textarea { min-height: 128px; resize: vertical; line-height: 1.5; }
+.form input::placeholder,.form textarea::placeholder { color: #575753; }
+.form input:focus,.form textarea:focus { border-color: #d4ff3e; }
+.submitButton { display: flex; width: 100%; align-items: center; justify-content: space-between; margin-top: 52px; padding: 24px 28px; border: 0; border-radius: 0; background: #d4ff3e; color: #080808; cursor: pointer; font-family: var(--font-anton); font-size: clamp(34px,4vw,56px); letter-spacing: -.025em; text-transform: uppercase; }
+.submitButton span { transition: transform .3s ease; }
+.submitButton:hover span { transform: translate(7px,-7px); }
+.formNote { margin: 13px 0 0; color: #777771; font-family: var(--font-geist-mono); font-size: 8px; text-transform: uppercase; }
+.socialSection { padding: 88px clamp(22px,6.65vw,96px) 120px; border-top: 1px solid rgba(255,255,255,.22); }
+.socialSection > div { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); margin-top: 40px; }
+.socialSection a { display: flex; justify-content: space-between; padding: 20px 18px 20px 0; border-top: 1px solid rgba(255,255,255,.2); color: inherit; font-family: var(--font-geist-mono); font-size: 10px; font-weight: 700; text-decoration: none; text-transform: uppercase; }
+.socialSection a:hover { color: #d4ff3e; }
+@keyframes contactTitleIn { from { opacity: 0; transform: translateY(42px); } }
+@media (max-width: 850px) {
+  .hero { min-height: 780px; padding: 132px 20px 70px; }
+  .hero h1 { margin-top: 60px; font-size: clamp(90px,30vw,132px); line-height: .76; }
+  .heroCopy { margin-top: 70px; font-size: 32px; }
+  .emailHero { margin-top: 54px; font-size: 14px; }
+  .contactGrid { display: block; }
+  .directory,.formSection { padding: 80px 20px; }
+  .directory { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.22); }
+  .emailList strong { font-size: 18px; }
+  .formHeading h2 { font-size: 59px; }
+  .form { margin-top: 62px; }
+  .fieldGrid { display: block; }
+  .fieldGrid label + label { display: block; margin-top: 38px; }
+  .socialSection { padding: 74px 20px 96px; }
+  .socialSection > div { display: block; }
+}
+@media (prefers-reduced-motion: reduce) { .hero h1 { animation: none; } }
