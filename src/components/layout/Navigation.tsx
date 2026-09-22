@@ -79,8 +79,11 @@ export default function Navigation() {
         ))}
       </nav>
 
-      <div className="fixed top-6 right-12 z-50 hidden items-center gap-2 lg:flex">
+      <div className="fixed top-6 right-12 z-50 hidden items-center gap-2.5 lg:flex">
         {!isHomePage && <ThemeToggle />}
+        <PillButton href="/booking" variant="solid" withArrow>
+          Book Us
+        </PillButton>
         <PillButton href="/contact" variant="glass" withArrow>
           Get In Touch
         </PillButton>
@@ -177,6 +180,10 @@ export default function Navigation() {
           <div
             style={{
               marginTop: "16px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+              width: "100%",
               transition: `transform 400ms cubic-bezier(${EASE_OUT_EXPO.join(",")}), opacity 400ms ease`,
               transitionDelay: menuOpen ? `${navLinks.length * 60}ms` : "0ms",
               transform: menuOpen ? "none" : "translateY(20px)",
@@ -184,6 +191,15 @@ export default function Navigation() {
             }}
           >
             {!isHomePage && <ThemeToggle mobile />}
+            <PillButton
+              href="/booking"
+              variant="solid"
+              size="large"
+              withArrow
+              onClick={() => setMenuOpen(false)}
+            >
+              Book Us
+            </PillButton>
             <PillButton
               href="/contact"
               variant="glass"

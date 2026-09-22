@@ -89,7 +89,14 @@ export default function PillButton({
     width: size === "large" ? "30px" : "28px",
     height: size === "large" ? "30px" : "28px",
     borderRadius: "9999px",
-    backgroundColor: hovered ? "rgba(245,245,240,0.22)" : "rgba(245,245,240,0.12)",
+    backgroundColor:
+      variant === "solid"
+        ? hovered
+          ? "rgba(0,0,0,0.18)"
+          : "rgba(0,0,0,0.08)"
+        : hovered
+          ? "rgba(245,245,240,0.22)"
+          : "rgba(245,245,240,0.12)",
     flexShrink: 0,
     transition: "background-color 300ms cubic-bezier(0.22, 1, 0.36, 1)",
   };
@@ -113,7 +120,7 @@ export default function PillButton({
               fill="none"
               width="12"
               height="12"
-              stroke="var(--fg-primary)"
+              stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
