@@ -38,20 +38,21 @@ const defaultCourses = [
 ];
 
 export default async function StudentDashboardPage() {
-  const supabase = await createClient();
-  const access = await checkCurrentUserAcademyAccess();
-
-  // Try fetching courses from Supabase
+  let access = { hasAccess: false, accessType: undefined as any };
   let dbCourses: any[] | null = null;
+
   try {
+    const supabase = await createClient();
+    access = (await checkCurrentUserAcademyAccess()) as any;
+
     const { data } = await (supabase as any)
       .from("academy_courses")
       .select("*, modules:academy_modules(*)")
       .eq("published", true)
       .order("display_order", { ascending: true });
     dbCourses = data;
-  } catch {
-    // Database might not have data yet, use starter courses
+  } catch (err) {
+    console.error("StudentDashboardPage data error:", err);
   }
 
   const courses = dbCourses && dbCourses.length > 0 ? dbCourses : defaultCourses;

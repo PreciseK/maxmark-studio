@@ -286,27 +286,28 @@ export default async function LessonPlayerPage({
   params: Promise<{ courseSlug: string; lessonSlug: string }>;
 }) {
   const { courseSlug, lessonSlug } = await params;
-  const supabase = await createClient();
-  const access = await checkCurrentUserAcademyAccess();
-
-  // Try fetching course from Supabase DB
   let dbCourse: any = null;
+  let access = { hasAccess: false, accessType: undefined as any };
+
   try {
+    const supabase = await createClient();
+    access = (await checkCurrentUserAcademyAccess()) as any;
+
     const { data } = await (supabase as any)
       .from("academy_courses")
       .select("*, modules:academy_modules(*, lessons:academy_lessons(*))")
       .eq("slug", courseSlug)
       .single();
-    dbCourse = data;
-  } catch {
-    // Database fallback
+
+    if (data?.modules && data.modules.some((m: any) => m.lessons && m.lessons.length > 0)) {
+      dbCourse = data;
+    }
+  } catch (err) {
+    console.error("LessonPlayerPage data error:", err);
   }
 
-  const course = dbCourse || fallbackCoursesMap[courseSlug] || fallbackCoursesMap["cinematic-ai-animation"];
-
-  if (!course) {
-    notFound();
-  }
+  const course =
+    dbCourse || fallbackCoursesMap[courseSlug] || fallbackCoursesMap["cinematic-ai-animation"];
 
   // Flatten lessons to find active lesson
   const allLessons: AcademyLesson[] = [];
@@ -317,11 +318,22 @@ export default async function LessonPlayerPage({
   });
 
   const currentLesson =
-    allLessons.find((l) => l.slug === lessonSlug) || allLessons[0];
-
-  if (!currentLesson) {
-    notFound();
-  }
+    allLessons.find((l) => l.slug === lessonSlug) ||
+    allLessons[0] || {
+      id: "fallback-intro",
+      course_id: course.id,
+      module_id: "mod-1",
+      slug: "intro",
+      title: "01. Introduction to Masterclass",
+      description_markdown: "Directorial overview and production principles.",
+      youtube_video_id: "dQw4w9WgXcQ",
+      duration_minutes: 15,
+      is_free_preview: true,
+      resources: [],
+      display_order: 1,
+      published: true,
+      created_at: new Date().toISOString(),
+    };
 
   // Determine lesson unlock state
   const isUnlocked = access.hasAccess || Boolean(currentLesson.is_free_preview);
