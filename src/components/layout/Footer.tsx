@@ -94,7 +94,7 @@ export default function Footer() {
                 { href: "/about", label: "About" },
                 { href: "/blog", label: "Blog" },
                 { href: "/contact", label: "Contact" },
-                // { href: "/booking", label: "Book the Studio" }, // Hidden for now
+                { href: "/booking", label: "Book Animation Video" },
               ].map((link) => (
                 <Link
                   key={link.href}

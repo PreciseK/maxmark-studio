@@ -13,6 +13,8 @@ type PillButtonProps = {
   withArrow?: boolean;
   className?: string;
   "aria-label"?: string;
+  target?: string;
+  rel?: string;
 };
 
 const GLASS_TRANSITION =
@@ -27,6 +29,8 @@ export default function PillButton({
   withArrow = false,
   className,
   "aria-label": ariaLabel,
+  target,
+  rel,
 }: PillButtonProps) {
   const [hovered, setHovered] = useState(false);
 
@@ -126,6 +130,8 @@ export default function PillButton({
     return (
       <Link
         href={href}
+        target={target}
+        rel={target === "_blank" ? rel || "noopener noreferrer" : rel}
         style={containerStyle}
         className={cn(className)}
         aria-label={ariaLabel}

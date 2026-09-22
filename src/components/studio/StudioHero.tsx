@@ -58,13 +58,13 @@ export default function StudioHero({ title = "Built for sound.", copy = "A physi
             href="/booking"
             className={styles.secondaryAction}
           >
-            Book a session
+            Book an animation video
           </Link>
         </div>
       </motion.div>
 
       <div className={styles.heroFoot}>
-        <span>Recording · Rehearsal · Podcast</span>
+        <span>Animated Shorts · Commercials · Music Videos</span>
         <span>Scroll to explore</span>
       </div>
       <StudioSpacesModal open={spacesOpen} onClose={closeSpaces} spaces={spaces} />

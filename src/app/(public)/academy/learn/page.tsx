@@ -1,8 +1,15 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { checkCurrentUserAcademyAccess } from "@/lib/academy/access";
+import PillButton from "@/components/ui/PillButton";
 
-// Default starter courses if no database courses are added yet
+export const metadata = {
+  title: "Student Portal — Masterclasses | Maxmark Animations",
+  description:
+    "Active student dashboard for AI animation, persistent character pipelines, and narrative storytelling masterclasses.",
+};
+
+// Production starter courses
 const defaultCourses = [
   {
     id: "course-1",
@@ -10,10 +17,11 @@ const defaultCourses = [
     title: "Cinematic AI Animation & Motion Mechanics",
     subtitle: "From Prompt Composition to Fluid Generative Video",
     description:
-      "Master character consistency, camera trajectory controls, motion brush physics, and diffusion pipelines for high-end animated films.",
+      "Master character turnaround consistency, camera trajectory controls, motion brush dynamics, and hybrid diffusion workflows for festival-grade animated films.",
     modulesCount: 5,
     lessonsCount: 22,
-    thumbnailUrl: null,
+    introSlug: "intro",
+    featuredBadge: "Flagship Masterclass",
   },
   {
     id: "course-2",
@@ -21,10 +29,11 @@ const defaultCourses = [
     title: "Visual Storytelling & Narrative Directing",
     subtitle: "Directing Short Films, Commercials & Music Videos",
     description:
-      "Learn how to write dramatic beat sheets, assemble cinematic storyboards, pace narrative tension, and direct coherent story worlds using generative video.",
+      "Learn how to write dramatic beat sheets, construct cinematic storyboards, pace narrative tension, and direct coherent story worlds using generative video pipelines.",
     modulesCount: 4,
     lessonsCount: 16,
-    thumbnailUrl: null,
+    introSlug: "intro",
+    featuredBadge: "Core Directing Track",
   },
 ];
 
@@ -32,107 +41,348 @@ export default async function StudentDashboardPage() {
   const supabase = await createClient();
   const access = await checkCurrentUserAcademyAccess();
 
-  // Fetch courses from Supabase
-  const { data: dbCourses } = await (supabase as any)
-    .from("academy_courses")
-    .select("*, modules:academy_modules(*)")
-    .eq("published", true)
-    .order("display_order", { ascending: true });
+  // Try fetching courses from Supabase
+  let dbCourses: any[] | null = null;
+  try {
+    const { data } = await (supabase as any)
+      .from("academy_courses")
+      .select("*, modules:academy_modules(*)")
+      .eq("published", true)
+      .order("display_order", { ascending: true });
+    dbCourses = data;
+  } catch {
+    // Database might not have data yet, use starter courses
+  }
 
   const courses = dbCourses && dbCourses.length > 0 ? dbCourses : defaultCourses;
 
   return (
-    <div className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-12">
-      {/* Top Welcome Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-8">
-        <div className="space-y-1">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#E3FF39]">
-            // STUDENT PORTAL
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold uppercase text-white tracking-tight">
-            My Masterclasses
-          </h1>
-          <p className="text-xs sm:text-sm text-neutral-400">
-            Welcome back. Select a course to continue your training.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="px-4 py-2 rounded-xl bg-white/[0.04] border border-white/10 text-xs font-mono">
-            <span className="text-neutral-400">MEMBERSHIP: </span>
-            <span className="text-[#E3FF39] font-bold uppercase">
-              {access.accessType === "lifetime" ? "Lifetime All-Access" : "Active Member"}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Courses Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {courses.map((course: any) => (
-          <div
-            key={course.id}
-            className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 flex flex-col justify-between hover:border-white/20 transition-all duration-300 space-y-6"
-          >
-            <div className="space-y-4">
-              <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400">
-                <span className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#E3FF39]">
-                  HD MASTERCLASS
-                </span>
-                <span>
-                  {course.modulesCount || course.modules?.length || 4} MODULES
-                </span>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-white tracking-tight mb-1">
-                  {course.title}
-                </h3>
-                {course.subtitle && (
-                  <p className="text-xs font-mono text-[#E3FF39]/80 uppercase">
-                    {course.subtitle}
-                  </p>
-                )}
-              </div>
-
-              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                {course.description}
+    <div
+      style={{
+        minHeight: "100vh",
+        backgroundColor: "var(--bg-base)",
+        color: "var(--fg-primary)",
+        paddingTop: "140px",
+        paddingBottom: "120px",
+      }}
+    >
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 clamp(20px, 4vw, 64px)" }}>
+        {/* 1. Header Section */}
+        <header
+          style={{
+            borderBottom: "1px solid var(--border-strong)",
+            paddingBottom: "48px",
+            marginBottom: "64px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "24px",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "20px" }}>
+            <div>
+              <p
+                style={{
+                  margin: "0 0 12px",
+                  color: "var(--accent-highlight)",
+                  fontFamily: "var(--font-geist-mono)",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Maxmark Animations // Student Portal
               </p>
+              <h1
+                style={{
+                  margin: 0,
+                  fontFamily: "var(--font-anton)",
+                  fontSize: "clamp(48px, 6vw, 84px)",
+                  lineHeight: 0.92,
+                  letterSpacing: "-0.03em",
+                  textTransform: "uppercase",
+                  color: "var(--fg-primary)",
+                }}
+              >
+                My Masterclasses.
+              </h1>
             </div>
 
-            <div className="pt-6 border-t border-white/10 flex items-center justify-between">
-              <Link
-                href={`/academy/learn/${course.slug}/intro`}
-                className="px-6 py-3 rounded-xl bg-[#E3FF39] text-black font-extrabold uppercase text-xs tracking-wider hover:bg-[#d6f030] transition-transform active:scale-95"
+            {/* Access Badge */}
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                padding: "8px 16px",
+                borderRadius: "999px",
+                border: "1px solid var(--border-strong)",
+                background: "var(--bg-elevated)",
+                fontFamily: "var(--font-geist-mono)",
+                fontSize: "11px",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+              }}
+            >
+              <span style={{ color: "var(--fg-muted)" }}>Membership:</span>
+              <span
+                style={{
+                  color: access.hasAccess ? "var(--accent-highlight)" : "var(--fg-subtle)",
+                  fontWeight: 700,
+                }}
               >
-                Launch Course Player →
-              </Link>
-              <span className="text-xs font-mono text-neutral-500">
-                SOURCE FILES INCLUDED
+                {access.hasAccess
+                  ? access.accessType === "lifetime"
+                    ? "Lifetime All-Access"
+                    : "Active Member"
+                  : "Preview Access"}
               </span>
             </div>
           </div>
-        ))}
-      </div>
 
-      {/* Student Resources & Community Banner */}
-      <div className="p-8 rounded-2xl bg-gradient-to-r from-neutral-900/60 to-black border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="space-y-2 text-center md:text-left">
-          <h4 className="text-xl font-bold text-white uppercase tracking-tight">
-            Maxmark Creator Circle Discord
-          </h4>
-          <p className="text-xs text-neutral-400 max-w-xl">
-            Join other enrolled creators, share work-in-progress, and get direct feedback from our directing team.
+          <p
+            style={{
+              margin: 0,
+              maxWidth: "740px",
+              color: "var(--fg-muted)",
+              fontFamily: "var(--font-geist-mono)",
+              fontSize: "14px",
+              lineHeight: 1.6,
+            }}
+          >
+            Welcome to the direct learning suite. Select any masterclass to open the cinema player,
+            access lesson breakdowns, download production starter assets, and follow the complete director’s pipeline.
           </p>
-        </div>
-        <a
-          href="https://discord.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono text-xs uppercase font-bold tracking-wider transition-colors shrink-0"
+
+          {!access.hasAccess && (
+            <div
+              style={{
+                padding: "16px 24px",
+                borderRadius: "12px",
+                border: "1px solid var(--border-strong)",
+                background: "color-mix(in srgb, var(--accent-highlight) 4%, var(--bg-base))",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "16px",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  fontSize: "12px",
+                  color: "var(--fg-primary)",
+                }}
+              >
+                🔓 You are viewing in Preview Mode with free introductory lessons unlocked.
+              </span>
+              <div style={{ display: "flex", gap: "12px" }}>
+                <PillButton href="/academy#pricing" variant="solid" size="default">
+                  Enroll in Academy →
+                </PillButton>
+                <PillButton href="/admin/login" variant="glass" size="default">
+                  Student Login
+                </PillButton>
+              </div>
+            </div>
+          )}
+        </header>
+
+        {/* 2. Courses Grid */}
+        <section
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))",
+            gap: "32px",
+            marginBottom: "80px",
+          }}
         >
-          Join Discord Channel ↗
-        </a>
+          {courses.map((course: any, idx: number) => (
+            <article
+              key={course.id || idx}
+              style={{
+                border: "1px solid var(--border-strong)",
+                background: "var(--bg-elevated)",
+                padding: "clamp(32px, 3.5vw, 48px)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                minHeight: "440px",
+                position: "relative",
+              }}
+            >
+              <div>
+                {/* Card Top Meta */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: "24px",
+                    fontFamily: "var(--font-geist-mono)",
+                    fontSize: "11px",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "var(--accent-highlight)",
+                      fontWeight: 700,
+                    }}
+                  >
+                    0{idx + 1} // MASTERCLASS
+                  </span>
+                  <span style={{ color: "var(--fg-muted)" }}>
+                    {course.modulesCount || course.modules?.length || 4} Modules · {course.lessonsCount || 18} Lessons
+                  </span>
+                </div>
+
+                {/* Course Title */}
+                <h2
+                  style={{
+                    margin: "0 0 12px",
+                    fontFamily: "var(--font-anton)",
+                    fontSize: "clamp(28px, 2.5vw, 38px)",
+                    letterSpacing: "-0.02em",
+                    lineHeight: 0.95,
+                    textTransform: "uppercase",
+                    color: "var(--fg-primary)",
+                  }}
+                >
+                  {course.title}
+                </h2>
+
+                {course.subtitle && (
+                  <p
+                    style={{
+                      margin: "0 0 20px",
+                      color: "var(--accent-highlight)",
+                      fontFamily: "var(--font-geist-mono)",
+                      fontSize: "11px",
+                      letterSpacing: "0.06em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {course.subtitle}
+                  </p>
+                )}
+
+                <p
+                  style={{
+                    margin: 0,
+                    color: "var(--fg-muted)",
+                    fontFamily: "var(--font-geist-mono)",
+                    fontSize: "13px",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {course.description}
+                </p>
+              </div>
+
+              {/* Bottom Action Footer */}
+              <div
+                style={{
+                  marginTop: "40px",
+                  paddingTop: "24px",
+                  borderTop: "1px solid var(--border)",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  gap: "16px",
+                }}
+              >
+                <PillButton
+                  href={`/academy/learn/${course.slug}/${course.introSlug || "intro"}`}
+                  variant="solid"
+                  size="large"
+                  withArrow
+                >
+                  Launch Masterclass
+                </PillButton>
+
+                <span
+                  style={{
+                    fontFamily: "var(--font-geist-mono)",
+                    fontSize: "10px",
+                    color: "var(--fg-subtle)",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Free Preview Included
+                </span>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        {/* 3. Discord Creator Circle Community Banner */}
+        <section
+          style={{
+            border: "1px solid var(--border-strong)",
+            background: "var(--bg-elevated)",
+            padding: "48px clamp(24px, 4vw, 56px)",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "32px",
+          }}
+        >
+          <div style={{ maxWidth: "640px" }}>
+            <p
+              style={{
+                margin: "0 0 8px",
+                color: "var(--accent-highlight)",
+                fontFamily: "var(--font-geist-mono)",
+                fontSize: "10px",
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+              }}
+            >
+              Private Director Circle
+            </p>
+            <h3
+              style={{
+                margin: "0 0 12px",
+                fontFamily: "var(--font-anton)",
+                fontSize: "clamp(26px, 2.8vw, 42px)",
+                lineHeight: 0.95,
+                letterSpacing: "-0.02em",
+                textTransform: "uppercase",
+                color: "var(--fg-primary)",
+              }}
+            >
+              Maxmark Creator Circle Discord
+            </h3>
+            <p
+              style={{
+                margin: 0,
+                color: "var(--fg-muted)",
+                fontFamily: "var(--font-geist-mono)",
+                fontSize: "13px",
+                lineHeight: 1.6,
+              }}
+            >
+              Connect with fellow animators and filmmakers, share work-in-progress, and receive direct
+              portfolio and timeline critiques from the Maxmark directing team.
+            </p>
+          </div>
+
+          <PillButton
+            href="https://discord.com"
+            target="_blank"
+            variant="glass"
+            size="large"
+          >
+            Join Discord Channel ↗
+          </PillButton>
+        </section>
       </div>
     </div>
   );

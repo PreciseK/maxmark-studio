@@ -61,7 +61,7 @@ export default function StudioSpacesModal({ open, onClose, spaces }: { open: boo
         <div className={styles.caption} aria-live="polite">
           <div><span>{space.eyebrow}</span><h2 id="spaces-modal-title">{space.title}</h2></div>
           <p>{space.copy}</p>
-          <Link href="/booking">Book this space <span aria-hidden="true">↗</span></Link>
+          <Link href="/booking">Book animation video <span aria-hidden="true">↗</span></Link>
         </div>
         <div className={styles.controls}>
           <button type="button" onClick={() => setActive(previous)} aria-label="Previous space">←</button>

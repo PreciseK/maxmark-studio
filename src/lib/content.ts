@@ -103,12 +103,41 @@ export async function getTeamMembers() {
 
 export async function getBookingServices() {
   const fallback: BookingServiceRow[] = [
-    { id: "recording", name: "Recording", duration_minutes: 120, description: "Vocals, instruments, and music production.", active: true, display_order: 1 },
-    { id: "rehearsal", name: "Rehearsal", duration_minutes: 180, description: "Artist, band, and live-set preparation.", active: true, display_order: 2 },
-    { id: "podcast", name: "Podcast", duration_minutes: 120, description: "Interviews, conversations, and video podcasts.", active: true, display_order: 3 },
+    {
+      id: "animated-film",
+      name: "Animated Short Film / Narrative",
+      duration_minutes: 60,
+      description: "Original narrative animated films, festival shorts, and script-to-screen production.",
+      active: true,
+      display_order: 1,
+    },
+    {
+      id: "commercial-spot",
+      name: "3D & AI Commercial Spot",
+      duration_minutes: 45,
+      description: "High-impact visual campaigns, broadcast commercials, and 3D product animation.",
+      active: true,
+      display_order: 2,
+    },
+    {
+      id: "animated-music-video",
+      name: "Animated Music Video",
+      duration_minutes: 60,
+      description: "Full-length animated music videos, cinematic visualizers, and artist worldbuilding.",
+      active: true,
+      display_order: 3,
+    },
+    {
+      id: "directorial-consultation",
+      name: "Directorial Consultation & Pipeline",
+      duration_minutes: 30,
+      description: "Creative treatment review, visual lore bibles, and custom diffusion pipeline architecture.",
+      active: true,
+      display_order: 4,
+    },
   ];
   if (!isSupabaseConfigured()) return fallback;
   const supabase = await createClient();
   const { data, error } = await supabase.from("booking_services").select("*").eq("active", true).order("display_order");
-  return error || !data?.length ? fallback : data as BookingServiceRow[];
+  return error || !data?.length ? fallback : (data as BookingServiceRow[]);
 }

@@ -37,8 +37,8 @@ export default function StudioServices({ images }: { images?: { recording?: stri
   return (
     <section className={styles.services} id="spaces">
       <div className={styles.servicesHeading}>
-        <p>Book the room your idea needs.</p>
-        <span>Three ways to use the studio</span>
+        <p>Book us for your animation video.</p>
+        <span>Production tracks for directors & brands</span>
       </div>
 
       {services.map((service) => (

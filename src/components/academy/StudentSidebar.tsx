@@ -33,7 +33,7 @@ export default function StudentSidebar({
   return (
     <aside
       className={cn(
-        "w-full lg:w-84 bg-neutral-950/85 backdrop-blur-2xl border-r border-white/10 flex flex-col h-full overflow-y-auto select-none",
+        "w-full lg:w-80 lg:min-w-[320px] lg:h-[calc(100vh-80px)] lg:sticky lg:top-20 bg-neutral-950/90 backdrop-blur-2xl border-r border-white/10 flex flex-col shrink-0 overflow-y-auto select-none",
         className
       )}
     >

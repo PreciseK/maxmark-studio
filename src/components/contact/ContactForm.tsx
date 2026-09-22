@@ -6,7 +6,7 @@ import { submitContact } from "@/lib/actions/cms";
 
 const inquiryTypes = [
   "Start a project",
-  // "Book the studio", // Hidden for now
+  "Book animation video",
   "General inquiry",
 ];
 
