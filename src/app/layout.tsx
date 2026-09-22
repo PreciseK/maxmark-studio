@@ -55,7 +55,7 @@ export default function RootLayout({
       style={{ backgroundColor: "var(--bg-base)" }}
     >
       <body style={{ backgroundColor: "var(--bg-base)", color: "var(--fg-primary)" }}>
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var p=localStorage.getItem('maxmark-theme')||'system';var t=p==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;document.documentElement.dataset.theme=t;document.documentElement.dataset.themePreference=p}catch(e){}})()` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var isHome=window.location.pathname==='/';if(isHome){document.documentElement.dataset.theme='dark';document.documentElement.dataset.themePreference='dark';return;}var p=localStorage.getItem('maxmark-theme')||'system';var t=p==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;document.documentElement.dataset.theme=t;document.documentElement.dataset.themePreference=p}catch(e){}})()` }} />
         {/* Global Liquid Glass SVG Filter Definitions */}
         <svg
           id="liquid-glass-filter-defs"

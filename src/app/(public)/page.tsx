@@ -14,6 +14,25 @@ export default function HomePage() {
   const closingHeroIndex = displaySections.length - 1;
   const activeRailIndex = activeSectionIndex === closingHeroIndex ? 0 : activeSectionIndex;
 
+  // Enforce dark mode strictly on the Home page
+  useEffect(() => {
+    const previousTheme = document.documentElement.dataset.theme;
+    document.documentElement.dataset.theme = "dark";
+
+    return () => {
+      const stored = localStorage.getItem("maxmark-theme");
+      if (stored === "light" || stored === "dark") {
+        document.documentElement.dataset.theme = stored;
+      } else if (stored === "system" || !stored) {
+        document.documentElement.dataset.theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      } else if (previousTheme) {
+        document.documentElement.dataset.theme = previousTheme;
+      }
+    };
+  }, []);
+
   useEffect(() => {
     fetch("/api/featured-projects", { cache: "no-store" })
       .then((response) => response.ok ? response.json() : null)

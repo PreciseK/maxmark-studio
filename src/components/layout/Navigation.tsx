@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import PillButton from "@/components/ui/PillButton";
 import { cn } from "@/lib/cn";
 import { EASE_OUT_EXPO } from "@/lib/motion";
@@ -17,6 +18,8 @@ const navLinks = [
 const BACKDROP = "var(--glass-blur)";
 
 export default function Navigation() {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [navHovered, setNavHovered] = useState(false);
@@ -77,7 +80,7 @@ export default function Navigation() {
       </nav>
 
       <div className="fixed top-6 right-12 z-50 hidden items-center gap-2 lg:flex">
-        <ThemeToggle />
+        {!isHomePage && <ThemeToggle />}
         <PillButton href="/contact" variant="glass" withArrow>
           Get In Touch
         </PillButton>
@@ -180,7 +183,7 @@ export default function Navigation() {
               opacity: menuOpen ? 1 : 0,
             }}
           >
-            <ThemeToggle mobile />
+            {!isHomePage && <ThemeToggle mobile />}
             <PillButton
               href="/contact"
               variant="glass"
