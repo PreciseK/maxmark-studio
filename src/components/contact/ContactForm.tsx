@@ -4,7 +4,11 @@ import { useState, type FormEvent } from "react";
 import styles from "@/app/(public)/contact/contact.module.css";
 import { submitContact } from "@/lib/actions/cms";
 
-const inquiryTypes = ["Start a project", "Book the studio", "General inquiry"];
+const inquiryTypes = [
+  "Start a project",
+  // "Book the studio", // Hidden for now
+  "General inquiry",
+];
 
 export default function ContactForm() {
   const [inquiryType, setInquiryType] = useState(inquiryTypes[0]);

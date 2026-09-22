@@ -5,9 +5,9 @@ import styles from "./about.module.css";
 import { getSitePage, getTeamMembers } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "About — Maxmark Studio",
+  title: "About — Maxmark Animations",
   description:
-    "Maxmark Studio is an AI-native production studio creating films, brand worlds, music visuals, and original stories from Africa.",
+    "Maxmark Animations is an AI-native production studio creating films, brand worlds, animated visuals, and original stories from Africa.",
 };
 
 const leadership = [
@@ -42,7 +42,7 @@ export default async function AboutPage() {
     getSitePage("about", {
       heroStatement: "Maxmark is a production studio creating films, brand worlds, and music visuals with cinematic craft at African market speed.",
       beliefTitle: "The story comes first. Technology helps it travel further.",
-      beliefHtml: "<p>Maxmark Studio brings filmmakers, designers, producers, and technologists into one connected production practice. We combine live action, AI-native workflows, and post-production around the needs of each idea.</p><p>Our perspective is rooted in Africa and built for a global screen. The goal is memorable work with a clear point of view.</p>",
+      beliefHtml: "<p>Maxmark Animations brings filmmakers, designers, producers, and technologists into one connected production practice. We combine live action, AI-native workflows, and post-production around the needs of each idea.</p><p>Our perspective is rooted in Africa and built for a global screen. The goal is memorable work with a clear point of view.</p>",
       joinImageUrl: "/about/head-of-production.png",
     }),
     getTeamMembers(),

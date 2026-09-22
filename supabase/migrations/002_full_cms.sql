@@ -1,4 +1,4 @@
--- Maxmark Studio full CMS: run after 001_initial_schema.sql.
+-- Maxmark Animations full CMS: run after 001_initial_schema.sql.
 
 ALTER TABLE public.projects
   ADD COLUMN IF NOT EXISTS challenge TEXT,
@@ -140,7 +140,7 @@ INSERT INTO public.booking_services (name, duration_minutes, description, displa
 ON CONFLICT (name) DO NOTHING;
 
 INSERT INTO public.site_pages (page_key, title, content_json) VALUES
-  ('about', 'About', '{"heroStatement":"Maxmark is a production studio creating films, brand worlds, and music visuals with cinematic craft at African market speed.","beliefTitle":"The story comes first. Technology helps it travel further.","beliefCopy":"Maxmark Studio brings filmmakers, designers, producers, and technologists into one connected production practice.","joinImageUrl":"/about/head-of-production.png"}'),
+  ('about', 'About', '{"heroStatement":"Maxmark is a production studio creating films, brand worlds, and music visuals with cinematic craft at African market speed.","beliefTitle":"The story comes first. Technology helps it travel further.","beliefCopy":"Maxmark Animations brings filmmakers, designers, producers, and technologists into one connected production practice.","joinImageUrl":"/about/head-of-production.png"}'),
   ('studio', 'Studio', '{"heroTitle":"Built for sound.","heroCopy":"A physical studio for recording, rehearsals, podcasts, and the moments between the idea and the take.","heroImageUrl":"/studio/recording-room.png","recordingImageUrl":"/studio/recording-room.png","rehearsalImageUrl":"/studio/rehearsal-room.png","podcastImageUrl":"/studio/podcast-room.png"}')
 ON CONFLICT (page_key) DO NOTHING;
 

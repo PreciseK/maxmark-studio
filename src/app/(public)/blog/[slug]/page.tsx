@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const post = await getPublishedBlogPost(slug);
   if (!post) return {};
-  return { title: `${post.title} — Maxmark Studio`, description: post.excerpt };
+  return { title: `${post.title} — Maxmark Animations`, description: post.excerpt };
 }
 
 export default async function BlogArticlePage({ params }: PageProps) {
@@ -39,7 +39,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
       <figure className={styles.heroMedia}>
         <Image src={post.imageUrl ?? getMuxThumbnail(post.project.muxPlaybackId, { time: post.heroTime, width: 1800 })} alt={`Hero image for ${post.title}`} fill unoptimized priority sizes="100vw" />
-        <figcaption>{post.project.title} · Maxmark Studio archive</figcaption>
+        <figcaption>{post.project.title} · Maxmark Animations archive</figcaption>
       </figure>
 
       <div className={styles.articleGrid}>

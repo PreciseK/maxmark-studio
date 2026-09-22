@@ -4,8 +4,8 @@ import { studio } from "@/content/studio";
 import styles from "./contact.module.css";
 
 export const metadata: Metadata = {
-  title: "Get in Touch — Maxmark Studio",
-  description: "Start a production or book Maxmark Studio for recording, podcasting, and rehearsals.",
+  title: "Get in Touch — Maxmark Animations",
+  description: "Start a production or get in touch with the Maxmark Animations team.",
 };
 
 export default function ContactPage() {
@@ -32,10 +32,12 @@ export default function ContactPage() {
             ))}
           </div>
 
+          {/* Studio bookings card hidden for now
           <div className={styles.availability}>
             <span className={styles.statusDot} aria-hidden="true" />
             <div><strong>Studio bookings open</strong><p>Recording · Rehearsals · Podcasts · Small shoots</p></div>
           </div>
+          */}
         </section>
 
         <section className={styles.formSection} aria-labelledby="form-title">

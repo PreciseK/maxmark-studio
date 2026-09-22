@@ -1,19 +1,26 @@
+import { notFound } from "next/navigation";
+/*
 import type { Metadata } from "next";
 import BookingCalendar from "@/components/booking/BookingCalendar";
 import { getBookingServices } from "@/lib/content";
 import styles from "./booking.module.css";
 
 export const metadata: Metadata = {
-  title: "Book the Studio — Maxmark Studio",
-  description: "Choose a studio service, date, and time for your Maxmark Studio session.",
+  title: "Book the Studio — Maxmark Animations",
+  description: "Choose a studio service, date, and time for your Maxmark Animations session.",
 };
+*/
 
 export default async function BookingPage() {
+  // Booking is hidden from users for now
+  notFound();
+
+  /*
   const services = await getBookingServices();
   return (
     <div className={`${styles.page} booking-theme-surface`}>
       <header className={styles.hero}>
-        <p>Maxmark Studio · Lagos</p>
+        <p>Maxmark Animations · Lagos</p>
         <h1>Book the room.</h1>
         <div><span>Recording</span><span>Rehearsals</span><span>Podcasts</span></div>
       </header>
@@ -26,4 +33,5 @@ export default async function BookingPage() {
       </main>
     </div>
   );
+  */
 }

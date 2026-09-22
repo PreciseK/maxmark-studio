@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!project) return {};
 
   return {
-    title: `${project.title} — Maxmark Studio`,
+    title: `${project.title} — Maxmark Animations`,
     description: (await getProjectPageDetail(project.slug)).summary,
   };
 }

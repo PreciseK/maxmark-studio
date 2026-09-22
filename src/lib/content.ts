@@ -40,7 +40,7 @@ export async function getPublishedProject(slug: string) {
 
 export async function getProjectPageDetail(slug: string) {
   const fallback = projectDetails[slug] ?? {
-    summary: "A Maxmark Studio production built around a clear idea, a strong visual language, and careful craft.",
+    summary: "A Maxmark Animations production built around a clear idea, a strong visual language, and careful craft.",
     challenge: "Translate the brief into a focused story that feels specific to its audience and ambitious in its execution.",
     approach: "A connected process across creative development, production, and finishing kept the original idea intact.",
     services: ["Creative direction", "Production", "Post-production"],

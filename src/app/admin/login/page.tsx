@@ -65,7 +65,7 @@ export default function LoginPage() {
           marginBottom: "12px",
         }}
       >
-        Maxmark Studio
+        Maxmark Animations
       </p>
 
       <h1

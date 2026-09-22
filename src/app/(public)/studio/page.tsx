@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+/*
 import type { Metadata } from "next";
 import Link from "next/link";
 import StudioHero from "@/components/studio/StudioHero";
@@ -6,9 +8,9 @@ import styles from "@/components/studio/Studio.module.css";
 import { getSitePage } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Studio Bookings — Maxmark Studio",
+  title: "Studio Bookings — Maxmark Animations",
   description:
-    "Book Maxmark Studio for recording sessions, rehearsals, podcasts, and creative production.",
+    "Book Maxmark Animations for recording sessions, rehearsals, podcasts, and creative production.",
 };
 
 const bookingSteps = [
@@ -28,8 +30,13 @@ const bookingSteps = [
     copy: "Arrive ready to record, rehearse, or have the conversation. We’ll handle the room.",
   },
 ];
+*/
 
 export default async function StudioPage() {
+  // Studio is hidden from users for now
+  notFound();
+
+  /*
   const content = await getSitePage("studio", {
     heroTitle: "Built for sound.",
     heroCopy: "A physical studio for recording, rehearsals, podcasts, and the moments between the idea and the take.",
@@ -51,7 +58,7 @@ export default async function StudioPage() {
         <h2>A room changes the way the work feels.</h2>
         <div className={styles.statementCopy}>
           <p>
-            Maxmark Studio is a bookable creative space for artists, bands, producers, hosts,
+            Maxmark Animations is a bookable creative space for artists, bands, producers, hosts,
             and teams who need a focused place to make something worth hearing.
           </p>
           <p>
@@ -122,4 +129,5 @@ export default async function StudioPage() {
       </Link>
     </div>
   );
+  */
 }

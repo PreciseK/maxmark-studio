@@ -146,7 +146,7 @@ export default function ProjectForm({ initialData }: Props) {
           </FormField>
 
           <FormField label="Eyebrow" error={errors.eyebrow?.message}>
-            <input {...register("eyebrow")} style={inputStyle} placeholder="e.g. Maxmark Studio Originals" />
+            <input {...register("eyebrow")} style={inputStyle} placeholder="e.g. Maxmark Animations Originals" />
           </FormField>
 
           <FormField label="Category *" error={errors.category?.message}>

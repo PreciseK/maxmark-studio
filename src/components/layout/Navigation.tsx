@@ -9,7 +9,7 @@ import ThemeToggle from "@/components/layout/ThemeToggle";
 
 const navLinks = [
   { href: "/work", label: "Work" },
-  { href: "/studio", label: "Studio" },
+  { href: "/academy", label: "Academy" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
 ];
@@ -48,6 +48,7 @@ export default function Navigation() {
         aria-label="Primary navigation"
         className="fixed z-50 hidden items-center lg:flex"
         style={{
+          position: "fixed",
           top: "24px",
           left: "clamp(180px, 19.3vw, 278px)",
           minHeight: "56px",
@@ -90,6 +91,7 @@ export default function Navigation() {
         aria-controls="mobile-navigation"
         className="fixed top-5 right-5 z-50 flex items-center lg:hidden"
         style={{
+          position: "fixed",
           minWidth: "88px",
           minHeight: "40px",
           justifyContent: "space-between",

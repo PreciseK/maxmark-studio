@@ -90,11 +90,11 @@ export default function Footer() {
             <nav className="flex flex-col gap-3">
               {[
                 { href: "/work", label: "Work" },
-                { href: "/studio", label: "Studio" },
+                // { href: "/studio", label: "Studio" }, // Hidden for now
                 { href: "/about", label: "About" },
                 { href: "/blog", label: "Blog" },
                 { href: "/contact", label: "Contact" },
-                { href: "/booking", label: "Book the Studio" },
+                // { href: "/booking", label: "Book the Studio" }, // Hidden for now
               ].map((link) => (
                 <Link
                   key={link.href}
@@ -240,7 +240,7 @@ export default function Footer() {
               letterSpacing: "0.06em",
             }}
           >
-            © {year} Maxmark Studio. All rights reserved.
+            © {year} Maxmark Animations. All rights reserved.
           </p>
           <div className="flex gap-6">
             {[

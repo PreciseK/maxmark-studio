@@ -50,12 +50,12 @@ export default function StudioSpacesModal({ open, onClose, spaces }: { open: boo
     <div className={`${styles.backdrop} ${open ? styles.backdropOpen : styles.backdropClosing}`} aria-hidden={!open} onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
       <section ref={modalRef} className={`t-modal ${open ? "is-open" : "is-closing"} ${styles.modal}`} role={open ? "dialog" : undefined} aria-modal={open ? "true" : undefined} aria-labelledby={open ? "spaces-modal-title" : undefined} inert={!open}>
         <div className={styles.topbar}>
-          <span>Maxmark Studio · Space tour</span>
+          <span>Maxmark Animations · Space tour</span>
           <button ref={closeRef} type="button" onClick={onClose} aria-label="Close space gallery">Close <i aria-hidden="true">×</i></button>
         </div>
         <div className={styles.stage}>
           <button className={`${styles.side} ${styles.previous}`} type="button" onClick={() => setActive(previous)} aria-label={`View ${spaces[previous].title}`}><Image src={spaces[previous].image} alt="" fill sizes="28vw" /></button>
-          <div className={styles.activeMedia} key={space.title}><Image src={space.image} alt={`${space.title} at Maxmark Studio`} fill priority sizes="(max-width: 800px) 92vw, 58vw" /></div>
+          <div className={styles.activeMedia} key={space.title}><Image src={space.image} alt={`${space.title} at Maxmark Animations`} fill priority sizes="(max-width: 800px) 92vw, 58vw" /></div>
           <button className={`${styles.side} ${styles.next}`} type="button" onClick={() => setActive(next)} aria-label={`View ${spaces[next].title}`}><Image src={spaces[next].image} alt="" fill sizes="28vw" /></button>
         </div>
         <div className={styles.caption} aria-live="polite">

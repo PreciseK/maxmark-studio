@@ -4,7 +4,7 @@ export default function Logo() {
   return (
     <Link
       href="/"
-      aria-label="Maxmark Studio — Home"
+      aria-label="Maxmark Animations — Home"
       className="fixed top-5 left-5 z-50 block lg:top-7 lg:left-12"
       style={{ lineHeight: 0.78, textDecoration: "none", mixBlendMode: "difference" }}
     >
@@ -24,7 +24,7 @@ export default function Logo() {
       >
         Maxmark
         <br />
-        Studio
+        Animations
       </span>
     </Link>
   );

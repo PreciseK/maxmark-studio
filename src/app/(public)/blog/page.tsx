@@ -7,8 +7,8 @@ import { getMuxThumbnail } from "@/lib/mux";
 import styles from "./blog.module.css";
 
 export const metadata: Metadata = {
-  title: "Blog — Maxmark Studio",
-  description: "Ideas, production notes, projects, and perspectives from Maxmark Studio.",
+  title: "Blog — Maxmark Animations",
+  description: "Ideas, production notes, projects, and perspectives from Maxmark Animations.",
 };
 
 export default async function BlogPage() {

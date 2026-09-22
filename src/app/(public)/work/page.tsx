@@ -5,8 +5,8 @@ import { getPublishedProjects } from "@/lib/content";
 import styles from "@/components/work/WorkShowcase.module.css";
 
 export const metadata: Metadata = {
-  title: "Work — Maxmark Studio",
-  description: "AI-native brand films, narratives, and music visuals created by Maxmark Studio.",
+  title: "Work — Maxmark Animations",
+  description: "AI-native brand films, narratives, and animated visuals created by Maxmark Animations.",
 };
 
 const partnerMarks = [
@@ -50,9 +50,18 @@ export default async function WorkPage() {
 
       <WorkShowcase projects={projects} />
 
+      {/* Studio section hidden for now
       <Link href="/studio" className={styles.continueLink}>
         <span className={styles.continueLabel}>Continue to</span>
         <span className={styles.continueTitle}>Studio</span>
+        <span className={styles.continueArrow} aria-hidden="true">
+          ↗
+        </span>
+      </Link>
+      */}
+      <Link href="/about" className={styles.continueLink}>
+        <span className={styles.continueLabel}>Continue to</span>
+        <span className={styles.continueTitle}>About</span>
         <span className={styles.continueArrow} aria-hidden="true">
           ↗
         </span>

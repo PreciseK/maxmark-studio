@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const navItems = [
   { href: "/admin/projects", label: "Projects" },
+  { href: "/admin/academy", label: "Academy" },
   { href: "/admin/blog", label: "Blog" },
   { href: "/admin/about", label: "About Page" },
   { href: "/admin/team", label: "Team" },
@@ -39,7 +40,7 @@ export default function AdminSidebar({ userEmail }: Props) {
       {/* Logo */}
       <div style={{ padding: "28px 24px 24px", borderBottom: "1px solid var(--border)" }}>
         <p style={{ fontFamily: "var(--font-geist-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.2em", color: "var(--fg-muted)" }}>
-          Maxmark Studio
+          Maxmark Animations
         </p>
         <p style={{ fontFamily: "var(--font-fraunces)", fontSize: "16px", color: "var(--fg-primary)", marginTop: "4px" }}>
           Admin

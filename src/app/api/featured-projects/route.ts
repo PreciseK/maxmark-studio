@@ -11,7 +11,7 @@ export async function GET() {
       id: project.slug,
       muxPlaybackId: project.muxPlaybackId,
       variant: "project" as const,
-      eyebrow: project.client ?? project.eyebrow ?? "Maxmark Studio Originals",
+      eyebrow: project.client ?? project.eyebrow ?? "Maxmark Animations Originals",
       title: project.title,
       primaryCta: { label: "Watch Project", href: `/work/${project.slug}` },
       secondaryCta: { label: `See All ${project.category} Work`, href: `/work?category=${project.category.toLowerCase()}` },

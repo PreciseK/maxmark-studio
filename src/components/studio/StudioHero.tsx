@@ -45,7 +45,7 @@ export default function StudioHero({ title = "Built for sound.", copy = "A physi
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
         style={reduceMotion ? undefined : { y: copyY, opacity: copyOpacity }}
       >
-        <p className={styles.heroKicker}>Maxmark Studio · Bookings open</p>
+        <p className={styles.heroKicker}>Maxmark Animations · Bookings open</p>
         <h1>{title}</h1>
         <p className={styles.heroCopy}>
           {copy}
