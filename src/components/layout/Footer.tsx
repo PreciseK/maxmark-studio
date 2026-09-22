@@ -79,7 +79,7 @@ export default function Footer() {
               className="mb-5"
               style={{
                 fontFamily: "var(--font-geist-mono)",
-                fontSize: "11px",
+                fontSize: "13px",
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
                 color: "var(--fg-muted)",
@@ -102,7 +102,7 @@ export default function Footer() {
                   className="transition-colors duration-200"
                   style={{
                     fontFamily: "var(--font-geist-sans)",
-                    fontSize: "15px",
+                    fontSize: "16px",
                     color: "var(--fg-muted)",
                   }}
                   onMouseEnter={(e) =>
@@ -126,7 +126,7 @@ export default function Footer() {
               className="mb-5"
               style={{
                 fontFamily: "var(--font-geist-mono)",
-                fontSize: "11px",
+                fontSize: "13px",
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
                 color: "var(--fg-muted)",
@@ -140,7 +140,7 @@ export default function Footer() {
                   <p
                     style={{
                       fontFamily: "var(--font-geist-mono)",
-                      fontSize: "11px",
+                      fontSize: "13px",
                       textTransform: "uppercase",
                       letterSpacing: "0.08em",
                       color: "var(--fg-subtle)",
@@ -154,7 +154,7 @@ export default function Footer() {
                     className="transition-colors duration-200"
                     style={{
                       fontFamily: "var(--font-geist-sans)",
-                      fontSize: "15px",
+                      fontSize: "16px",
                       color: "var(--fg-muted)",
                     }}
                     onMouseEnter={(e) =>
@@ -179,7 +179,7 @@ export default function Footer() {
               className="mb-5"
               style={{
                 fontFamily: "var(--font-geist-mono)",
-                fontSize: "11px",
+                fontSize: "13px",
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
                 color: "var(--fg-muted)",
@@ -191,9 +191,9 @@ export default function Footer() {
               className="mb-4"
               style={{
                 fontFamily: "var(--font-geist-sans)",
-                fontSize: "14px",
+                fontSize: "16px",
                 color: "var(--fg-muted)",
-                lineHeight: 1.5,
+                lineHeight: 1.55,
               }}
             >
               New work, behind-the-scenes, and studio dispatches — no noise.
@@ -235,7 +235,7 @@ export default function Footer() {
           <p
             style={{
               fontFamily: "var(--font-geist-mono)",
-              fontSize: "11px",
+              fontSize: "13px",
               color: "var(--fg-subtle)",
               letterSpacing: "0.06em",
             }}
@@ -252,7 +252,7 @@ export default function Footer() {
                 href={link.href}
                 style={{
                   fontFamily: "var(--font-geist-mono)",
-                  fontSize: "11px",
+                  fontSize: "13px",
                   color: "var(--fg-subtle)",
                   letterSpacing: "0.06em",
                 }}

@@ -14,7 +14,7 @@
 
 .heroKicker {
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -38,7 +38,7 @@
   gap: 16px;
   margin-top: 24px;
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   color: var(--fg-muted);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -73,14 +73,14 @@
   max-width: 740px;
   margin: 0;
   font-family: var(--font-geist-mono);
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.7;
   color: var(--fg-muted);
 }
 
 .introMeta {
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   color: var(--accent-highlight);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -110,7 +110,7 @@
 
 .stepLabel {
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -158,7 +158,7 @@
   margin-top: 8px;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -202,7 +202,7 @@
 
 .calendarHead strong {
   font-family: var(--font-geist-mono);
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--fg-primary);
@@ -218,7 +218,7 @@
 .weekdays span {
   text-align: center;
   font-family: var(--font-geist-mono);
-  font-size: 10px;
+  font-size: 12px;
   color: var(--fg-subtle);
   text-transform: uppercase;
   padding-bottom: 8px;
@@ -234,7 +234,7 @@
   border: 1px solid transparent;
   background: transparent;
   font-family: var(--font-geist-mono);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--fg-primary);
   border-radius: 8px;
   transition: all 150ms ease;
@@ -276,7 +276,7 @@
   background-color: var(--bg-elevated);
   color: var(--fg-primary);
   font-family: var(--font-geist-mono);
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 8px;
   cursor: pointer;
   transition: all 150ms ease;
@@ -299,7 +299,7 @@
   margin: 32px 0;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
@@ -319,7 +319,7 @@
 .detailsSection label {
   display: block;
   font-family: var(--font-geist-mono);
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-muted);
@@ -337,7 +337,7 @@
   color: var(--fg-primary);
   outline: none;
   font-family: var(--font-geist-sans);
-  font-size: 14px;
+  font-size: 16px;
   transition: border-color 200ms ease;
   box-sizing: border-box;
 }
@@ -364,7 +364,7 @@
   background-color: var(--bg-elevated);
   border-radius: 12px;
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -413,7 +413,7 @@
 
 .response {
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   color: var(--fg-muted);
   letter-spacing: 0.06em;
   text-transform: uppercase;

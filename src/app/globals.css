@@ -71,7 +71,7 @@ html[data-theme="light"] {
   cursor: pointer;
   backdrop-filter: var(--glass-blur);
   font-family: var(--font-geist-mono);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -164,7 +164,7 @@ button:focus-visible {
 .site-nav-link {
   color: var(--fg-primary);
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-decoration: none;

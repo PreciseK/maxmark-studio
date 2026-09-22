@@ -22,7 +22,7 @@
   margin: 0 0 18px;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -43,10 +43,10 @@
   margin: 38px auto 0;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: clamp(16px, 1.38vw, 20px);
+  font-size: clamp(19px, 1.6vw, 24px);
   font-weight: 550;
   letter-spacing: -0.035em;
-  line-height: 1.48;
+  line-height: 1.5;
 }
 
 .partnerRail {
@@ -104,7 +104,7 @@
   color: var(--fg-primary);
   cursor: pointer;
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: -0.04em;
   text-transform: uppercase;
@@ -190,7 +190,7 @@
   display: block;
   color: var(--fg-muted);
   font-family: var(--font-geist-sans);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 650;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -309,7 +309,7 @@
   border-radius: 999px;
   color: var(--fg-primary);
   font-family: var(--font-geist-mono);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-decoration: none;
@@ -397,7 +397,7 @@
 .listMeta {
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 550;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -451,7 +451,7 @@
 
 .continueLabel {
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -517,7 +517,7 @@
   .heroDescription {
     max-width: 355px;
     margin-top: 20px;
-    font-size: 15px;
+    font-size: 17px;
     letter-spacing: -0.035em;
     line-height: 1.5;
   }
@@ -546,7 +546,7 @@
   .viewSwitch button {
     min-height: 35px;
     padding: 0 13px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .projectGrid {

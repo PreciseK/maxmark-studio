@@ -25,7 +25,7 @@
   margin: 0 0 18px;
   color: var(--accent-highlight);
   font-family: var(--font-geist-mono);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -47,10 +47,10 @@
   margin: 34px auto 0;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: clamp(16px, 1.38vw, 20px);
+  font-size: clamp(19px, 1.6vw, 24px);
   font-weight: 550;
   letter-spacing: -0.035em;
-  line-height: 1.48;
+  line-height: 1.5;
 }
 
 .heroActions {
@@ -129,7 +129,7 @@
 .screeningMeta {
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -172,7 +172,7 @@
   margin: 0;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.7;
 }
 
@@ -223,7 +223,7 @@
 .curriculumNumber {
   color: var(--accent-highlight);
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -242,8 +242,8 @@
   margin: 0 0 24px;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 .curriculumList {
@@ -260,8 +260,8 @@
 .curriculumList li {
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 11px;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 1.45;
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -276,7 +276,7 @@
   margin-top: 24px;
   color: var(--accent-highlight);
   font-family: var(--font-geist-mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -322,7 +322,7 @@
   background: var(--accent-highlight);
   color: #080808;
   font-family: var(--font-geist-mono);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -343,8 +343,8 @@
   margin: 0 0 32px;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.55;
   min-height: 40px;
 }
 
@@ -359,7 +359,7 @@
   display: block;
   color: var(--fg-subtle);
   font-family: var(--font-geist-mono);
-  font-size: 13px;
+  font-size: 15px;
   text-decoration: line-through;
   margin-bottom: 4px;
 }
@@ -382,7 +382,7 @@
 .pricingInterval {
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -399,8 +399,8 @@
 .pricingBenefits li {
   color: var(--fg-primary);
   font-family: var(--font-geist-mono);
-  font-size: 12px;
-  line-height: 1.45;
+  font-size: 15px;
+  line-height: 1.5;
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -416,7 +416,7 @@
   text-align: center;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border-bottom: 1px solid var(--border-strong);
@@ -479,7 +479,7 @@
   margin: 0 0 18px;
   color: var(--accent-highlight);
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -489,8 +489,8 @@
   margin: 0;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 /* ==========================================================================
@@ -519,8 +519,8 @@
   margin: 0;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.65;
   max-width: 620px;
 }
 
@@ -539,7 +539,7 @@
   background: var(--bg-elevated);
   color: var(--fg-primary);
   font-family: var(--font-geist-mono);
-  font-size: 12px;
+  font-size: 14px;
   outline: none;
   transition: border-color 200ms ease;
 }
@@ -601,7 +601,7 @@
   margin: 18px 0 0;
   color: var(--fg-muted);
   font-family: var(--font-geist-mono);
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.65;
   max-width: 800px;
 }
@@ -629,7 +629,7 @@
 
 .continueLabel {
   font-family: var(--font-geist-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
