@@ -9,6 +9,8 @@ export const metadata = {
     "Active student dashboard for AI animation, persistent character pipelines, and narrative storytelling masterclasses.",
 };
 
+export const dynamic = "force-dynamic";
+
 // Production starter courses
 const defaultCourses = [
   {

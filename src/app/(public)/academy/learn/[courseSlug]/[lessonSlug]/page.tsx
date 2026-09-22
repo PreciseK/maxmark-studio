@@ -7,6 +7,8 @@ import StudentSidebar from "@/components/academy/StudentSidebar";
 import PillButton from "@/components/ui/PillButton";
 import type { AcademyLesson } from "@/types/academy";
 
+export const dynamic = "force-dynamic";
+
 // Comprehensive fallback courses map for offline/preview mode and unseeded DB
 const fallbackCoursesMap: Record<string, any> = {
   "cinematic-ai-animation": {

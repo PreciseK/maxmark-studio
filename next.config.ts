@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 import path from "path";
 
-const supabaseHostname = new URL(
-  process.env.NEXT_PUBLIC_SUPABASE_URL ?? "https://your-project.supabase.co",
-).hostname;
+let supabaseHostname = "your-project.supabase.co";
+try {
+  const urlStr = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://agzsfvmxbvcyhtueyatk.supabase.co";
+  supabaseHostname = new URL(urlStr).hostname;
+} catch {
+  supabaseHostname = "agzsfvmxbvcyhtueyatk.supabase.co";
+}
 
 const nextConfig: NextConfig = {
   images: {
@@ -18,6 +22,15 @@ const nextConfig: NextConfig = {
         pathname: "/storage/v1/object/public/**",
       },
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/login",
+        destination: "/admin/login",
+        permanent: false,
+      },
+    ];
   },
   turbopack: {
     root: path.resolve(__dirname),
