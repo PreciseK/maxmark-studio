@@ -6,7 +6,7 @@ type Preference = "system" | "light" | "dark";
 const order: Preference[] = ["system", "light", "dark"];
 
 function applyTheme(preference: Preference) {
-  if (typeof window !== "undefined" && window.location.pathname === "/") {
+  if (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === "/reels")) {
     document.documentElement.dataset.theme = "dark";
     document.documentElement.dataset.themePreference = preference;
     return;

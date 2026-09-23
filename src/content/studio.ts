@@ -2,22 +2,22 @@ import type { StudioContent } from "@/types";
 
 export const studio: StudioContent = {
   manifesto:
-    "An AI-Native Production Studio. Cinematic Craft at African Market Speed.",
+    "AI-Native Film & Animation Studio. AI films that look directed. Not generated.",
   contactEmails: [
     {
-      label: "Brand",
-      email: "brand@maxmarkstudio.com",
-      description: "Brand films, campaigns & commercials",
+      label: "Commissioning & Projects",
+      email: "info@maxmarkagency.com",
+      description: "Commercials, brand films, narratives & music visuals",
     },
     {
-      label: "Narrative",
-      email: "narrative@maxmarkstudio.com",
-      description: "Short films, docs & long-form content",
+      label: "Academy & Education",
+      email: "academy@maxmarkagency.com",
+      description: "Directorial masterclasses & team training",
     },
     {
-      label: "General",
-      email: "info@maxmarkstudio.com",
-      description: "Everything else",
+      label: "General Inquiries",
+      email: "info@maxmarkagency.com",
+      description: "Lagos, Nigeria · Available Worldwide",
     },
   ],
   socials: [

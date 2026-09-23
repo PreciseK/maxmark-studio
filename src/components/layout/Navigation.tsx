@@ -10,9 +10,10 @@ import ThemeToggle from "@/components/layout/ThemeToggle";
 
 const navLinks = [
   { href: "/work", label: "Work" },
+  { href: "/#capabilities", label: "Capabilities" },
+  { href: "/#process", label: "Process" },
   { href: "/academy", label: "Academy" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
 ];
 
 const BACKDROP = "var(--glass-blur)";
@@ -82,10 +83,7 @@ export default function Navigation() {
       <div className="fixed top-6 right-12 z-50 hidden items-center gap-2.5 lg:flex">
         {!isHomePage && <ThemeToggle />}
         <PillButton href="/booking" variant="solid" withArrow>
-          Book Us
-        </PillButton>
-        <PillButton href="/contact" variant="glass" withArrow>
-          Get In Touch
+          START A PROJECT
         </PillButton>
       </div>
 
@@ -162,7 +160,7 @@ export default function Navigation() {
               onClick={() => setMenuOpen(false)}
               style={{
                 fontFamily: "var(--font-anton)",
-                fontSize: "clamp(48px, 13vw, 72px)",
+                fontSize: "clamp(44px, 12vw, 68px)",
                 textTransform: "uppercase",
                 letterSpacing: "-0.02em",
                 color: "var(--fg-primary)",
@@ -179,7 +177,7 @@ export default function Navigation() {
           ))}
           <div
             style={{
-              marginTop: "16px",
+              marginTop: "20px",
               display: "flex",
               flexDirection: "column",
               gap: "12px",
@@ -198,16 +196,16 @@ export default function Navigation() {
               withArrow
               onClick={() => setMenuOpen(false)}
             >
-              Book Us
+              START A PROJECT
             </PillButton>
             <PillButton
-              href="/contact"
+              href="/reels"
               variant="glass"
               size="large"
               withArrow
               onClick={() => setMenuOpen(false)}
             >
-              Get In Touch
+              Watch Reels
             </PillButton>
           </div>
         </nav>

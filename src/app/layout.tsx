@@ -30,12 +30,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Maxmark Animations — AI-Native Animation & Film Studio",
+  title: "Maxmark Animations — AI-Native Film & Animation Studio",
   description:
-    "An AI-Native Production Studio. Cinematic Craft at African Market Speed. Brand films, narratives, and animated visuals for brands and artists across Africa and emerging markets.",
+    "AI films that look directed. Not generated. Commercials, brand films, narrative worlds and music visuals with cinematic craft, human direction and AI-native speed. Created from Lagos, built for global screens.",
   openGraph: {
-    title: "Maxmark Animations",
-    description: "Cinematic Craft at African Market Speed.",
+    title: "Maxmark Animations — AI-Native Film & Animation Studio",
+    description: "AI films that look directed. Not generated.",
     siteName: "Maxmark Animations",
     locale: "en_US",
     type: "website",
@@ -55,7 +55,7 @@ export default function RootLayout({
       style={{ backgroundColor: "var(--bg-base)" }}
     >
       <body style={{ backgroundColor: "var(--bg-base)", color: "var(--fg-primary)" }}>
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var isHome=window.location.pathname==='/';if(isHome){document.documentElement.dataset.theme='dark';document.documentElement.dataset.themePreference='dark';return;}var p=localStorage.getItem('maxmark-theme')||'system';var t=p==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;document.documentElement.dataset.theme=t;document.documentElement.dataset.themePreference=p}catch(e){}})()` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var isDarkLocked=window.location.pathname==='/'||window.location.pathname==='/reels';if(isDarkLocked){document.documentElement.dataset.theme='dark';document.documentElement.dataset.themePreference='dark';return;}var p=localStorage.getItem('maxmark-theme')||'system';var t=p==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;document.documentElement.dataset.theme=t;document.documentElement.dataset.themePreference=p}catch(e){}})()` }} />
         {/* Global Liquid Glass SVG Filter Definitions */}
         <svg
           id="liquid-glass-filter-defs"

@@ -90,11 +90,13 @@ export default function Footer() {
             <nav className="flex flex-col gap-3">
               {[
                 { href: "/work", label: "Work" },
-                // { href: "/studio", label: "Studio" }, // Hidden for now
+                { href: "/reels", label: "Featured Reels" },
+                { href: "/#capabilities", label: "Capabilities" },
+                { href: "/#process", label: "Process" },
+                { href: "/academy", label: "Academy" },
                 { href: "/about", label: "About" },
-                { href: "/blog", label: "Blog" },
+                { href: "/booking", label: "Start A Project" },
                 { href: "/contact", label: "Contact" },
-                { href: "/booking", label: "Book Animation Video" },
               ].map((link) => (
                 <Link
                   key={link.href}
@@ -232,16 +234,28 @@ export default function Footer() {
           className="mt-12 flex flex-wrap items-center justify-between gap-4 pt-8"
           style={{ borderTop: "1px solid var(--border)" }}
         >
-          <p
-            style={{
-              fontFamily: "var(--font-geist-mono)",
-              fontSize: "13px",
-              color: "var(--fg-subtle)",
-              letterSpacing: "0.06em",
-            }}
-          >
-            © {year} Maxmark Animations. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-1">
+            <p
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                fontSize: "13px",
+                color: "var(--fg-subtle)",
+                letterSpacing: "0.06em",
+              }}
+            >
+              © {year} Maxmark Animations. All rights reserved.
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                fontSize: "11px",
+                color: "var(--fg-muted)",
+                letterSpacing: "0.04em",
+              }}
+            >
+              AI-native film and animation by Maxmark Agency.
+            </p>
+          </div>
           <div className="flex gap-6">
             {[
               { href: "/privacy", label: "Privacy" },
