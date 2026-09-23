@@ -40,17 +40,17 @@ export default function Navigation() {
     };
   }, [menuOpen]);
 
-  const pillBg = scrolled
-    ? "var(--glass-bg-scrolled)"
-    : navHovered
-      ? "var(--glass-bg-hover)"
+  const pillBg = navHovered
+    ? "var(--glass-bg-hover)"
+    : scrolled
+      ? "var(--glass-bg-scrolled)"
       : "var(--glass-bg)";
 
   return (
     <>
       <nav
         aria-label="Primary navigation"
-        className="fixed z-50 hidden items-center lg:flex"
+        className="glass-btn fixed z-50 hidden items-center lg:flex"
         style={{
           position: "fixed",
           top: "24px",
@@ -60,15 +60,14 @@ export default function Navigation() {
           backdropFilter: BACKDROP,
           WebkitBackdropFilter: BACKDROP,
           backgroundColor: pillBg,
-          border: `1px solid ${navHovered && !scrolled ? "var(--glass-border-hover)" : "var(--glass-border)"}`,
-          boxShadow:
-            navHovered && !scrolled
-              ? "inset 0 1px 0 var(--glass-highlight-hover), 0 12px 40px rgba(0,0,0,0.16)"
-              : "inset 0 1px 0 var(--glass-highlight), 0 12px 40px rgba(0,0,0,0.12)",
+          border: `1px solid ${navHovered ? "var(--glass-border-hover)" : "var(--glass-border)"}`,
+          boxShadow: navHovered
+            ? "inset 0 1px 0 var(--glass-highlight-hover), inset 0 -8px 18px rgba(0, 0, 0, 0.10), 0 14px 36px rgba(0, 0, 0, 0.16)"
+            : "inset 0 1px 0 var(--glass-highlight), inset 0 -8px 18px rgba(0, 0, 0, 0.12), 0 10px 30px rgba(0, 0, 0, 0.10)",
           padding: "0 22px",
           gap: "28px",
           transition:
-            "background-color 300ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1)",
+            "background-color 250ms cubic-bezier(0.22, 1, 0.36, 1), border-color 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
         onMouseEnter={() => setNavHovered(true)}
         onMouseLeave={() => setNavHovered(false)}
@@ -82,7 +81,7 @@ export default function Navigation() {
 
       <div className="fixed top-6 right-12 z-50 hidden items-center gap-2.5 lg:flex">
         {!isHomePage && <ThemeToggle />}
-        <PillButton href="/booking" variant="solid" withArrow>
+        <PillButton href="/booking" variant="glass" withArrow>
           START A PROJECT
         </PillButton>
       </div>
@@ -121,7 +120,7 @@ export default function Navigation() {
         <span>{menuOpen ? "Close" : "Menu"}</span>
         <span
           className="flex h-7 w-7 flex-col items-center justify-center gap-[4px] rounded-full"
-          style={{ backgroundColor: "rgba(245,245,240,0.1)" }}
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.12)" }}
           aria-hidden="true"
         >
           {[0, 1, 2].map((line) => (
@@ -193,7 +192,7 @@ export default function Navigation() {
             {!isHomePage && <ThemeToggle mobile />}
             <PillButton
               href="/booking"
-              variant="solid"
+              variant="glass"
               size="large"
               withArrow
               onClick={() => setMenuOpen(false)}

@@ -16,9 +16,9 @@
   /* Shared liquid-glass tokens (per liquid-glass-frontend skill) */
   --glass-bg: rgba(255, 255, 255, 0.08);
   --glass-bg-hover: rgba(255, 255, 255, 0.16);
-  --glass-bg-scrolled: rgba(13, 15, 16, 0.78);
-  --glass-border: rgba(255, 255, 255, 0.22);
-  --glass-border-hover: rgba(255, 255, 255, 0.44);
+  --glass-bg-scrolled: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.20);
+  --glass-border-hover: rgba(255, 255, 255, 0.40);
   --glass-highlight: rgba(255, 255, 255, 0.32);
   --glass-highlight-hover: rgba(255, 255, 255, 0.48);
   --glass-blur: blur(28px) saturate(190%);
@@ -46,13 +46,13 @@ html[data-theme="light"] {
   --fg-subtle: #96968e;
   --border: rgba(10, 10, 10, 0.09);
   --border-strong: rgba(10, 10, 10, 0.2);
-  --glass-bg: rgba(255, 255, 255, 0.52);
-  --glass-bg-hover: rgba(255, 255, 255, 0.74);
-  --glass-bg-scrolled: rgba(241, 240, 233, 0.88);
-  --glass-border: rgba(10, 10, 10, 0.16);
-  --glass-border-hover: rgba(10, 10, 10, 0.32);
-  --glass-highlight: rgba(255, 255, 255, 0.65);
-  --glass-highlight-hover: rgba(255, 255, 255, 0.85);
+  --glass-bg: rgba(255, 255, 255, 0.30);
+  --glass-bg-hover: rgba(255, 255, 255, 0.48);
+  --glass-bg-scrolled: rgba(255, 255, 255, 0.38);
+  --glass-border: rgba(10, 10, 10, 0.14);
+  --glass-border-hover: rgba(10, 10, 10, 0.28);
+  --glass-highlight: rgba(255, 255, 255, 0.70);
+  --glass-highlight-hover: rgba(255, 255, 255, 0.90);
   --glass-blur: blur(28px) saturate(210%);
   --admin-bg: #ecebe4;
   --admin-sidebar-bg: #e4e2d9;
