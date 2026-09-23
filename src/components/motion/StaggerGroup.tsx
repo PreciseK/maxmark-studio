@@ -4,6 +4,8 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
+type ItemSpeed = "1s" | "2s" | "3s" | 1 | 2 | 3;
+
 type StaggerGroupProps = {
   children: ReactNode;
   className?: string;
@@ -16,16 +18,24 @@ type StaggerItemProps = {
   className?: string;
   yOffset?: number;
   duration?: number;
+  speed?: ItemSpeed;
 };
 
 // Luxurious cinematic deceleration curve
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
+function resolveItemDuration(duration?: number, speed?: ItemSpeed): number {
+  if (duration !== undefined) return duration;
+  if (speed === "1s" || speed === 1) return 1.2;
+  if (speed === "3s" || speed === 3) return 2.8;
+  return 1.8; // Default for card items: 1.8s
+}
+
 export function StaggerGroup({
   children,
   className,
-  staggerDelay = 0.12,
-  delayStart = 0.08,
+  staggerDelay = 0.22,
+  delayStart = 0.1,
 }: StaggerGroupProps) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -55,10 +65,12 @@ export function StaggerGroup({
 export function StaggerItem({
   children,
   className,
-  yOffset = 28,
-  duration = 0.85,
+  yOffset = 32,
+  duration,
+  speed = "2s",
 }: StaggerItemProps) {
   const shouldReduceMotion = useReducedMotion();
+  const effectiveDuration = resolveItemDuration(duration, speed);
 
   const itemVariants: Variants = {
     hidden: shouldReduceMotion
@@ -73,7 +85,7 @@ export function StaggerItem({
           opacity: 1,
           transform: "translateY(0px) scale(1)",
           transition: {
-            duration,
+            duration: effectiveDuration,
             ease: EASE_OUT,
           },
         },
