@@ -9,19 +9,22 @@ type MotionSectionProps = {
   className?: string;
   id?: string;
   delay?: number;
+  duration?: number;
   threshold?: number;
   yOffset?: number;
   tag?: "section" | "div" | "article";
 };
 
-const EASE_OUT = [0.22, 1, 0.36, 1] as const;
+// Luxurious cinematic deceleration curve (Apple cinema / Awwwards standard)
+const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
 export default function MotionSection({
   children,
   className,
   id,
   delay = 0,
-  yOffset = 28,
+  duration = 0.95,
+  yOffset = 36,
   tag = "section",
 }: MotionSectionProps) {
   const shouldReduceMotion = useReducedMotion();
@@ -50,9 +53,9 @@ export default function MotionSection({
               transform: "translateY(0px) scale(1)",
             }
       }
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-70px" }}
       transition={{
-        duration: 0.55,
+        duration,
         delay,
         ease: EASE_OUT,
       }}

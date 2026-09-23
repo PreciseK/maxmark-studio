@@ -7,16 +7,19 @@ import { cn } from "@/lib/cn";
 type HeroRevealProps = {
   children: ReactNode;
   delay?: number;
+  duration?: number;
   yOffset?: number;
   className?: string;
 };
 
-const EASE_OUT = [0.22, 1, 0.36, 1] as const;
+// Luxurious cinematic deceleration curve
+const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
 export default function HeroReveal({
   children,
   delay = 0,
-  yOffset = 20,
+  duration = 0.9,
+  yOffset = 26,
   className,
 }: HeroRevealProps) {
   const shouldReduceMotion = useReducedMotion();
@@ -41,7 +44,7 @@ export default function HeroReveal({
             }
       }
       transition={{
-        duration: 0.5,
+        duration,
         delay,
         ease: EASE_OUT,
       }}

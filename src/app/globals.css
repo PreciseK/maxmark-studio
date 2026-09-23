@@ -37,8 +37,8 @@
   --modal-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Emil Kowalski motion tokens (emil-design-eng & animate skills) */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -142,8 +142,8 @@ html[data-theme="light"] {
 /* ===== Emil Kowalski Motion Framework (emil-design-eng & animate skills) ===== */
 .animate-enter {
   opacity: 0;
-  transform: translateY(22px) scale(0.98);
-  transition: opacity 450ms var(--ease-out), transform 450ms var(--ease-out);
+  transform: translateY(32px) scale(0.98);
+  transition: opacity 850ms var(--ease-out), transform 850ms var(--ease-out);
   will-change: opacity, transform;
 }
 
@@ -152,17 +152,17 @@ html[data-theme="light"] {
   transform: translateY(0) scale(1);
 }
 
-/* Stagger delay ladder (50ms per Emil Kowalski rule) */
-.stagger-1 { transition-delay: 50ms; }
-.stagger-2 { transition-delay: 100ms; }
-.stagger-3 { transition-delay: 150ms; }
-.stagger-4 { transition-delay: 200ms; }
-.stagger-5 { transition-delay: 250ms; }
-.stagger-6 { transition-delay: 300ms; }
+/* Stagger delay ladder (100ms interval for cinematic rhythm) */
+.stagger-1 { transition-delay: 100ms; }
+.stagger-2 { transition-delay: 200ms; }
+.stagger-3 { transition-delay: 300ms; }
+.stagger-4 { transition-delay: 400ms; }
+.stagger-5 { transition-delay: 500ms; }
+.stagger-6 { transition-delay: 600ms; }
 
 /* Interactive press feedback */
 .press-scale {
-  transition: transform 160ms var(--ease-out);
+  transition: transform 180ms var(--ease-out);
 }
 .press-scale:active {
   transform: scale(0.97);
@@ -171,10 +171,10 @@ html[data-theme="light"] {
 /* Gated hover for fine pointer devices */
 @media (hover: hover) and (pointer: fine) {
   .hover-lift {
-    transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out), border-color 220ms var(--ease-out);
+    transition: transform 350ms var(--ease-out), box-shadow 350ms var(--ease-out), border-color 350ms var(--ease-out);
   }
   .hover-lift:hover {
-    transform: translateY(-2px) scale(1.01);
+    transform: translateY(-3px) scale(1.012);
   }
 }
 

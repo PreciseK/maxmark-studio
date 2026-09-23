@@ -194,13 +194,13 @@ export default function HomePage() {
         <div className={styles.heroScrim} />
 
         <div className={styles.heroContent}>
-          <HeroReveal delay={0} yOffset={16}>
+          <HeroReveal delay={0.15} yOffset={20}>
             <span className={styles.heroKicker}>
               AI-NATIVE FILM &amp; ANIMATION STUDIO // LAGOS / WORKING WORLDWIDE
             </span>
           </HeroReveal>
 
-          <HeroReveal delay={0.12} yOffset={24}>
+          <HeroReveal delay={0.35} yOffset={28}>
             <h1 className={styles.heroTitle}>
               AI FILMS THAT LOOK DIRECTED.
               <br />
@@ -208,14 +208,14 @@ export default function HomePage() {
             </h1>
           </HeroReveal>
 
-          <HeroReveal delay={0.22} yOffset={20}>
+          <HeroReveal delay={0.55} yOffset={24}>
             <p className={styles.heroCopy}>
               Maxmark Animations creates commercials, brand films, narrative worlds and music
               visuals with cinematic craft, human direction and AI-native speed.
             </p>
           </HeroReveal>
 
-          <HeroReveal delay={0.32} yOffset={20}>
+          <HeroReveal delay={0.75} yOffset={24}>
             <div className={styles.heroActions}>
               <PillButton
                 variant="glass"
@@ -231,7 +231,7 @@ export default function HomePage() {
             </div>
           </HeroReveal>
 
-          <HeroReveal delay={0.42} yOffset={16}>
+          <HeroReveal delay={0.95} yOffset={20}>
             <div className={styles.trustBar}>
               <span>HUMAN DIRECTED</span>
               <span>·</span>
@@ -287,7 +287,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <StaggerGroup className={styles.filmsGrid} staggerDelay={0.06}>
+        <StaggerGroup className={styles.filmsGrid} staggerDelay={0.14} delayStart={0.1}>
           {CONCEPT_FILMS.map((film) => (
             <StaggerItem key={film.id}>
               <Link href={film.href} className={styles.filmCard}>
@@ -338,7 +338,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <StaggerGroup className={styles.capabilitiesGrid} staggerDelay={0.05}>
+        <StaggerGroup className={styles.capabilitiesGrid} staggerDelay={0.12} delayStart={0.1}>
           {CAPABILITIES.map((cap) => (
             <StaggerItem key={cap.title} className={styles.capabilityCard}>
               <span className={styles.capabilityIndex}>{cap.number}</span>
@@ -361,7 +361,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <StaggerGroup className={styles.processGrid} staggerDelay={0.07}>
+        <StaggerGroup className={styles.processGrid} staggerDelay={0.15} delayStart={0.1}>
           {PROCESS_STEPS.map((step) => (
             <StaggerItem key={step.name} className={styles.processCard}>
               <span className={styles.processStep}>{step.step}</span>
@@ -391,7 +391,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <StaggerGroup className={styles.responsiblePillars} staggerDelay={0.06}>
+        <StaggerGroup className={styles.responsiblePillars} staggerDelay={0.12} delayStart={0.1}>
           {RESPONSIBLE_PILLARS.map((pillar) => (
             <StaggerItem key={pillar.title} className={styles.pillarCard}>
               <strong>{pillar.title}</strong>

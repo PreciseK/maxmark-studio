@@ -15,15 +15,17 @@ type StaggerItemProps = {
   children: ReactNode;
   className?: string;
   yOffset?: number;
+  duration?: number;
 };
 
-const EASE_OUT = [0.22, 1, 0.36, 1] as const;
+// Luxurious cinematic deceleration curve
+const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
 export function StaggerGroup({
   children,
   className,
-  staggerDelay = 0.06,
-  delayStart = 0.05,
+  staggerDelay = 0.12,
+  delayStart = 0.08,
 }: StaggerGroupProps) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -42,7 +44,7 @@ export function StaggerGroup({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-70px" }}
       variants={containerVariants}
     >
       {children}
@@ -50,7 +52,12 @@ export function StaggerGroup({
   );
 }
 
-export function StaggerItem({ children, className, yOffset = 22 }: StaggerItemProps) {
+export function StaggerItem({
+  children,
+  className,
+  yOffset = 28,
+  duration = 0.85,
+}: StaggerItemProps) {
   const shouldReduceMotion = useReducedMotion();
 
   const itemVariants: Variants = {
@@ -66,7 +73,7 @@ export function StaggerItem({ children, className, yOffset = 22 }: StaggerItemPr
           opacity: 1,
           transform: "translateY(0px) scale(1)",
           transition: {
-            duration: 0.45,
+            duration,
             ease: EASE_OUT,
           },
         },
