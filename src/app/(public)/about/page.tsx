@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./about.module.css";
 import { getSitePage, getTeamMembers } from "@/lib/content";
+import MotionSection from "@/components/motion/MotionSection";
+import { StaggerGroup, StaggerItem } from "@/components/motion/StaggerGroup";
 
 export const metadata: Metadata = {
   title: "About — Maxmark Animations",
@@ -62,15 +64,15 @@ export default async function AboutPage() {
         </div>
       </header>
 
-      <section className={styles.intro}>
+      <MotionSection className={styles.intro} tag="section">
         <div className={styles.introHeading}>
           <p className={styles.eyebrow}>What we believe</p>
           <h2>{pageContent.beliefTitle}</h2>
         </div>
         <div className={styles.introCopy} dangerouslySetInnerHTML={{ __html: pageContent.beliefHtml }} />
-      </section>
+      </MotionSection>
 
-      <section className={styles.principles}>
+      <MotionSection className={styles.principles} tag="section">
         <article>
           <span>01</span>
           <h3>We build worlds.</h3>
@@ -87,37 +89,39 @@ export default async function AboutPage() {
             the original idea survives the process.
           </p>
         </article>
-      </section>
+      </MotionSection>
 
-      <section className={styles.leadership}>
+      <MotionSection className={styles.leadership} tag="section">
         <div className={styles.sectionHeading}>
           <p className={styles.eyebrow}>Leadership</p>
           <h2>The people shaping the studio.</h2>
           <p>Portraits and profiles are placeholders until the Maxmark team roster is supplied.</p>
         </div>
 
-        <div className={styles.peopleGrid}>
+        <StaggerGroup className={styles.peopleGrid}>
           {people.map((person, index) => (
-            <article className={styles.person} key={`${person.role}-${index}`}>
-              <div className={styles.personMedia}>
-                <Image
-                  src={person.image}
-                  alt={person.alt}
-                  fill
-                  sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw"
-                  className={styles.personImage}
-                />
-                <span>{String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <h3>{person.name}</h3>
-              <p>{person.role}</p>
-              <div className={styles.placeholderBio} dangerouslySetInnerHTML={{ __html: person.bioHtml }} />
-            </article>
+            <StaggerItem key={`${person.role}-${index}`}>
+              <article className={styles.person}>
+                <div className={styles.personMedia}>
+                  <Image
+                    src={person.image}
+                    alt={person.alt}
+                    fill
+                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw"
+                    className={styles.personImage}
+                  />
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <h3>{person.name}</h3>
+                <p>{person.role}</p>
+                <div className={styles.placeholderBio} dangerouslySetInnerHTML={{ __html: person.bioHtml }} />
+              </article>
+            </StaggerItem>
           ))}
-        </div>
-      </section>
+        </StaggerGroup>
+      </MotionSection>
 
-      <section className={styles.joinSection}>
+      <MotionSection className={styles.joinSection} tag="section">
         <div className={styles.joinPortrait}>
           <Image
             src={pageContent.joinImageUrl}
@@ -138,13 +142,15 @@ export default async function AboutPage() {
             Introduce yourself <span aria-hidden="true">↗</span>
           </Link>
         </div>
-      </section>
+      </MotionSection>
 
-      <Link href="/blog" className={styles.aboutCta}>
-        <span>Ideas, process, and studio notes</span>
-        <strong>Read the blog</strong>
-        <i aria-hidden="true">↗</i>
-      </Link>
+      <MotionSection tag="div">
+        <Link href="/blog" className={styles.aboutCta}>
+          <span>Ideas, process, and studio notes</span>
+          <strong>Read the blog</strong>
+          <i aria-hidden="true">↗</i>
+        </Link>
+      </MotionSection>
     </div>
   );
 }

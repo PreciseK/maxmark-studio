@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import WorkShowcase from "@/components/work/WorkShowcase";
 import { getPublishedProjects } from "@/lib/content";
+import MotionSection from "@/components/motion/MotionSection";
 import styles from "@/components/work/WorkShowcase.module.css";
 
 export const metadata: Metadata = {
@@ -48,24 +49,19 @@ export default async function WorkPage() {
         </div>
       </header>
 
-      <WorkShowcase projects={projects} />
+      <MotionSection tag="div">
+        <WorkShowcase projects={projects} />
+      </MotionSection>
 
-      {/* Studio section hidden for now
-      <Link href="/studio" className={styles.continueLink}>
-        <span className={styles.continueLabel}>Continue to</span>
-        <span className={styles.continueTitle}>Studio</span>
-        <span className={styles.continueArrow} aria-hidden="true">
-          ↗
-        </span>
-      </Link>
-      */}
-      <Link href="/about" className={styles.continueLink}>
-        <span className={styles.continueLabel}>Continue to</span>
-        <span className={styles.continueTitle}>About</span>
-        <span className={styles.continueArrow} aria-hidden="true">
-          ↗
-        </span>
-      </Link>
+      <MotionSection tag="div">
+        <Link href="/about" className={styles.continueLink}>
+          <span className={styles.continueLabel}>Continue to</span>
+          <span className={styles.continueTitle}>About</span>
+          <span className={styles.continueArrow} aria-hidden="true">
+            ↗
+          </span>
+        </Link>
+      </MotionSection>
     </div>
   );
 }

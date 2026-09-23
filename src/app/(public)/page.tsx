@@ -4,6 +4,9 @@ import { useEffect } from "react";
 import Link from "next/link";
 import PillButton from "@/components/ui/PillButton";
 import MuxLoopPlayer from "@/components/video/MuxLoopPlayer";
+import MotionSection from "@/components/motion/MotionSection";
+import HeroReveal from "@/components/motion/HeroReveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/StaggerGroup";
 import styles from "./home.module.css";
 
 const CONCEPT_FILMS = [
@@ -178,7 +181,7 @@ export default function HomePage() {
   return (
     <div className={styles.page}>
       {/* =====================================================================
-          1. HERO SECTION
+          1. HERO SECTION (Orchestrated Page-Load Motion)
           ===================================================================== */}
       <section className={styles.hero} aria-label="Maxmark Animations Hero">
         <div className={styles.heroMedia}>
@@ -191,49 +194,59 @@ export default function HomePage() {
         <div className={styles.heroScrim} />
 
         <div className={styles.heroContent}>
-          <span className={styles.heroKicker}>
-            AI-NATIVE FILM &amp; ANIMATION STUDIO // LAGOS / WORKING WORLDWIDE
-          </span>
+          <HeroReveal delay={0} yOffset={16}>
+            <span className={styles.heroKicker}>
+              AI-NATIVE FILM &amp; ANIMATION STUDIO // LAGOS / WORKING WORLDWIDE
+            </span>
+          </HeroReveal>
 
-          <h1 className={styles.heroTitle}>
-            AI FILMS THAT LOOK DIRECTED.
-            <br />
-            <span>NOT GENERATED.</span>
-          </h1>
+          <HeroReveal delay={0.12} yOffset={24}>
+            <h1 className={styles.heroTitle}>
+              AI FILMS THAT LOOK DIRECTED.
+              <br />
+              <span>NOT GENERATED.</span>
+            </h1>
+          </HeroReveal>
 
-          <p className={styles.heroCopy}>
-            Maxmark Animations creates commercials, brand films, narrative worlds and music
-            visuals with cinematic craft, human direction and AI-native speed.
-          </p>
+          <HeroReveal delay={0.22} yOffset={20}>
+            <p className={styles.heroCopy}>
+              Maxmark Animations creates commercials, brand films, narrative worlds and music
+              visuals with cinematic craft, human direction and AI-native speed.
+            </p>
+          </HeroReveal>
 
-          <div className={styles.heroActions}>
-            <PillButton
-              variant="solid"
-              size="large"
-              withArrow
-              onClick={scrollToWork}
-            >
-              WATCH THE 15-SECOND FILMS
-            </PillButton>
-            <PillButton href="/booking" variant="glass" size="large" withArrow>
-              START A PROJECT
-            </PillButton>
-          </div>
+          <HeroReveal delay={0.32} yOffset={20}>
+            <div className={styles.heroActions}>
+              <PillButton
+                variant="glass"
+                size="large"
+                withArrow
+                onClick={scrollToWork}
+              >
+                WATCH THE 15-SECOND FILMS
+              </PillButton>
+              <PillButton href="/booking" variant="glass" size="large" withArrow>
+                START A PROJECT
+              </PillButton>
+            </div>
+          </HeroReveal>
 
-          <div className={styles.trustBar}>
-            <span>HUMAN DIRECTED</span>
-            <span>·</span>
-            <span>AI ACCELERATED</span>
-            <span>·</span>
-            <span>RESPONSIBLY PRODUCED</span>
-          </div>
+          <HeroReveal delay={0.42} yOffset={16}>
+            <div className={styles.trustBar}>
+              <span>HUMAN DIRECTED</span>
+              <span>·</span>
+              <span>AI ACCELERATED</span>
+              <span>·</span>
+              <span>RESPONSIBLY PRODUCED</span>
+            </div>
+          </HeroReveal>
         </div>
       </section>
 
       {/* =====================================================================
           2. INTRODUCTION (PHILOSOPHY)
           ===================================================================== */}
-      <section className={styles.introSection} aria-label="Studio Manifesto">
+      <MotionSection className={styles.introSection} aria-label="Studio Manifesto">
         <div className={styles.introGrid}>
           <div>
             <div className={styles.introEyebrow}>PHILOSOPHY</div>
@@ -255,12 +268,12 @@ export default function HomePage() {
             </span>
           </div>
         </div>
-      </section>
+      </MotionSection>
 
       {/* =====================================================================
           3. SELECTED WORK (15-SECOND CONCEPT FILMS)
           ===================================================================== */}
-      <section id="selected-work" className={styles.workSection} aria-label="Selected Concept Films">
+      <MotionSection id="selected-work" className={styles.workSection} aria-label="Selected Concept Films">
         <div className={styles.sectionHeader}>
           <div className={styles.sectionEyebrow}>SELECTED WORK</div>
           <h2 className={styles.sectionTitle}>
@@ -274,42 +287,44 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className={styles.filmsGrid}>
+        <StaggerGroup className={styles.filmsGrid} staggerDelay={0.06}>
           {CONCEPT_FILMS.map((film) => (
-            <Link key={film.id} href={film.href} className={styles.filmCard}>
-              <div className={styles.filmMedia}>
-                <MuxLoopPlayer
-                  playbackId={film.muxPlaybackId}
-                  title={film.title}
-                  className={styles.filmVideo}
-                />
-                <span className={styles.filmBadge}>{film.badge}</span>
-              </div>
-              <div className={styles.filmContent}>
-                <div>
-                  <div className={styles.filmNumber}>{film.number} — CONCEPT</div>
-                  <h3 className={styles.filmTitle}>{film.title}</h3>
+            <StaggerItem key={film.id}>
+              <Link href={film.href} className={styles.filmCard}>
+                <div className={styles.filmMedia}>
+                  <MuxLoopPlayer
+                    playbackId={film.muxPlaybackId}
+                    title={film.title}
+                    className={styles.filmVideo}
+                  />
+                  <span className={styles.filmBadge}>{film.badge}</span>
                 </div>
-                <div className={styles.filmCategory}>{film.category}</div>
-              </div>
-            </Link>
+                <div className={styles.filmContent}>
+                  <div>
+                    <div className={styles.filmNumber}>{film.number} — CONCEPT</div>
+                    <h3 className={styles.filmTitle}>{film.title}</h3>
+                  </div>
+                  <div className={styles.filmCategory}>{film.category}</div>
+                </div>
+              </Link>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
 
         <div className={styles.workFooterActions}>
-          <PillButton href="/work" variant="solid" size="large" withArrow>
+          <PillButton href="/work" variant="glass" size="large" withArrow>
             WATCH ALL FILMS
           </PillButton>
           <PillButton href="/reels" variant="glass" size="large" withArrow>
             EXPLORE FULLSCREEN REELS
           </PillButton>
         </div>
-      </section>
+      </MotionSection>
 
       {/* =====================================================================
           4. CAPABILITIES
           ===================================================================== */}
-      <section id="capabilities" className={styles.capabilitiesSection} aria-label="Capabilities">
+      <MotionSection id="capabilities" className={styles.capabilitiesSection} aria-label="Capabilities">
         <div className={styles.sectionHeader}>
           <div className={styles.sectionEyebrow}>CAPABILITIES</div>
           <h2 className={styles.sectionTitle}>
@@ -323,21 +338,21 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className={styles.capabilitiesGrid}>
+        <StaggerGroup className={styles.capabilitiesGrid} staggerDelay={0.05}>
           {CAPABILITIES.map((cap) => (
-            <div key={cap.title} className={styles.capabilityCard}>
+            <StaggerItem key={cap.title} className={styles.capabilityCard}>
               <span className={styles.capabilityIndex}>{cap.number}</span>
               <h3 className={styles.capabilityTitle}>{cap.title}</h3>
               <p className={styles.capabilityText}>{cap.description}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
-      </section>
+        </StaggerGroup>
+      </MotionSection>
 
       {/* =====================================================================
           5. PROCESS ("NOT PROMPT AND HOPE")
           ===================================================================== */}
-      <section id="process" className={styles.processSection} aria-label="Production Process">
+      <MotionSection id="process" className={styles.processSection} aria-label="Production Process">
         <div className={styles.sectionHeader}>
           <div className={styles.sectionEyebrow}>PROCESS</div>
           <h2 className={styles.sectionTitle}>NOT “PROMPT AND HOPE.”</h2>
@@ -346,21 +361,21 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className={styles.processGrid}>
+        <StaggerGroup className={styles.processGrid} staggerDelay={0.07}>
           {PROCESS_STEPS.map((step) => (
-            <div key={step.name} className={styles.processCard}>
+            <StaggerItem key={step.name} className={styles.processCard}>
               <span className={styles.processStep}>{step.step}</span>
               <h3 className={styles.processName}>{step.name}</h3>
               <p className={styles.processDetail}>{step.detail}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
-      </section>
+        </StaggerGroup>
+      </MotionSection>
 
       {/* =====================================================================
           6. RESPONSIBLE AI
           ===================================================================== */}
-      <section className={styles.responsibleSection} aria-label="Responsible AI Production">
+      <MotionSection className={styles.responsibleSection} aria-label="Responsible AI Production">
         <div className={styles.sectionHeader}>
           <div className={styles.sectionEyebrow}>RESPONSIBLE AI</div>
           <h2 className={styles.sectionTitle}>
@@ -376,20 +391,20 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className={styles.responsiblePillars}>
+        <StaggerGroup className={styles.responsiblePillars} staggerDelay={0.06}>
           {RESPONSIBLE_PILLARS.map((pillar) => (
-            <div key={pillar.title} className={styles.pillarCard}>
+            <StaggerItem key={pillar.title} className={styles.pillarCard}>
               <strong>{pillar.title}</strong>
               <p>{pillar.text}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
-      </section>
+        </StaggerGroup>
+      </MotionSection>
 
       {/* =====================================================================
           7 & 8. ACADEMY & ABOUT TEASERS
           ===================================================================== */}
-      <section className={styles.splitTeasers} aria-label="Academy and About">
+      <MotionSection className={styles.splitTeasers} aria-label="Academy and About">
         <div className={styles.teaserCol}>
           <div>
             <div className={styles.sectionEyebrow}>ACADEMY</div>
@@ -401,7 +416,7 @@ export default function HomePage() {
             </p>
           </div>
           <div>
-            <PillButton href="/academy" variant="solid" withArrow>
+            <PillButton href="/academy" variant="glass" withArrow>
               EXPLORE THE ACADEMY
             </PillButton>
           </div>
@@ -423,12 +438,12 @@ export default function HomePage() {
             </PillButton>
           </div>
         </div>
-      </section>
+      </MotionSection>
 
       {/* =====================================================================
           9. FINAL CTA
           ===================================================================== */}
-      <section className={styles.finalCtaSection} aria-label="Start A Project">
+      <MotionSection className={styles.finalCtaSection} aria-label="Start A Project">
         <div className={styles.finalCtaEyebrow}>START A PRODUCTION</div>
         <h2 className={styles.finalCtaTitle}>
           WHAT CAN YOUR NEXT
@@ -443,7 +458,7 @@ export default function HomePage() {
         </p>
 
         <div className={styles.finalCtaActions}>
-          <PillButton href="/booking" variant="solid" size="large" withArrow>
+          <PillButton href="/booking" variant="glass" size="large" withArrow>
             START A PROJECT
           </PillButton>
           <a href="mailto:info@maxmarkagency.com" className={styles.finalCtaEmail}>
@@ -454,7 +469,7 @@ export default function HomePage() {
         <div className={styles.finalCtaFoot}>
           LAGOS, NIGERIA · AVAILABLE WORLDWIDE
         </div>
-      </section>
+      </MotionSection>
     </div>
   );
 }

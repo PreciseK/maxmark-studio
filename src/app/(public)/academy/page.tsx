@@ -7,6 +7,7 @@ import AcademyPricing from "@/components/academy/AcademyPricing";
 import AcademyInstructors from "@/components/academy/AcademyInstructors";
 import AcademyFAQ from "@/components/academy/AcademyFAQ";
 import FreeFieldGuideModal from "@/components/academy/FreeFieldGuideModal";
+import MotionSection from "@/components/motion/MotionSection";
 import styles from "@/components/academy/Academy.module.css";
 
 export const metadata: Metadata = {
@@ -46,7 +47,7 @@ export default function AcademyPage() {
           </p>
 
           <div className={styles.heroActions}>
-            <PillButton href="#pricing" variant="solid" size="large" withArrow>
+            <PillButton href="#pricing" variant="glass" size="large" withArrow>
               Enroll in Academy
             </PillButton>
             <PillButton href="/academy/learn" variant="glass" size="large">
@@ -77,10 +78,12 @@ export default function AcademyPage() {
       </section>
 
       {/* 3. CINEMA SCREENING ROOM (HERO TRAILER) */}
-      <AcademyHeroTrailer videoId="dQw4w9WgXcQ" />
+      <MotionSection tag="div">
+        <AcademyHeroTrailer videoId="dQw4w9WgXcQ" />
+      </MotionSection>
 
       {/* 4. PHILOSOPHY & STATEMENT */}
-      <section className={styles.statementSection}>
+      <MotionSection className={styles.statementSection} tag="section">
         <div className={styles.statementHeading}>
           <p className={styles.kicker}>Directing & Visual Storytelling</p>
           <h2>From Isolated Prompts to Cinematic Films.</h2>
@@ -99,29 +102,39 @@ export default function AcademyPage() {
             design to broadcast and festival standard.
           </p>
         </div>
-      </section>
+      </MotionSection>
 
       {/* 5. CURRICULUM ARCHITECTURAL GRID */}
-      <AcademyCurriculum />
+      <MotionSection tag="div">
+        <AcademyCurriculum />
+      </MotionSection>
 
       {/* 6. INSTRUCTORS & DIRECTORS ROSTER */}
-      <AcademyInstructors />
+      <MotionSection tag="div">
+        <AcademyInstructors />
+      </MotionSection>
 
       {/* 7. TUITION & ENROLLMENT (PAYSTACK TIERS) */}
-      <AcademyPricing />
+      <MotionSection tag="div">
+        <AcademyPricing />
+      </MotionSection>
 
       {/* 8. FIELD GUIDE COMPLIMENTARY DOWNLOAD */}
       <FreeFieldGuideModal />
 
       {/* 9. FREQUENTLY ASKED QUESTIONS */}
-      <AcademyFAQ />
+      <MotionSection tag="div">
+        <AcademyFAQ />
+      </MotionSection>
 
       {/* 10. SIGNATURE CONTINUE BANNER */}
-      <Link href="/work" className={styles.continueLink}>
-        <span className={styles.continueLabel}>Continue to</span>
-        <span className={styles.continueTitle}>Work</span>
-        <span className={styles.continueArrow}>↗</span>
-      </Link>
+      <MotionSection tag="div">
+        <Link href="/work" className={styles.continueLink}>
+          <span className={styles.continueLabel}>Continue to</span>
+          <span className={styles.continueTitle}>Work</span>
+          <span className={styles.continueArrow}>↗</span>
+        </Link>
+      </MotionSection>
     </div>
   );
 }

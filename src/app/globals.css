@@ -35,6 +35,12 @@
   --modal-scale: 0.96;
   --modal-scale-close: 0.96;
   --modal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Emil Kowalski motion tokens (emil-design-eng & animate skills) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 html[data-theme="light"] {
@@ -131,6 +137,67 @@ html[data-theme="light"] {
     inset 0 1px 0 var(--glass-highlight-hover),
     inset 0 -8px 18px rgba(0, 0, 0, 0.10),
     0 16px 36px -10px rgba(0, 0, 0, 0.60);
+}
+
+/* ===== Emil Kowalski Motion Framework (emil-design-eng & animate skills) ===== */
+.animate-enter {
+  opacity: 0;
+  transform: translateY(22px) scale(0.98);
+  transition: opacity 450ms var(--ease-out), transform 450ms var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.animate-enter.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger delay ladder (50ms per Emil Kowalski rule) */
+.stagger-1 { transition-delay: 50ms; }
+.stagger-2 { transition-delay: 100ms; }
+.stagger-3 { transition-delay: 150ms; }
+.stagger-4 { transition-delay: 200ms; }
+.stagger-5 { transition-delay: 250ms; }
+.stagger-6 { transition-delay: 300ms; }
+
+/* Interactive press feedback */
+.press-scale {
+  transition: transform 160ms var(--ease-out);
+}
+.press-scale:active {
+  transform: scale(0.97);
+}
+
+/* Gated hover for fine pointer devices */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift {
+    transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out), border-color 220ms var(--ease-out);
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-enter {
+    opacity: 0;
+    transform: none !important;
+    transition: opacity 200ms ease !important;
+  }
+  .animate-enter.is-visible {
+    opacity: 1;
+    transform: none !important;
+  }
 }
 
 .theme-toggle {
