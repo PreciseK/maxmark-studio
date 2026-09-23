@@ -93,7 +93,7 @@ export default function Navigation() {
         aria-label={menuOpen ? "Close menu" : "Open menu"}
         aria-expanded={menuOpen}
         aria-controls="mobile-navigation"
-        className="fixed top-5 right-5 z-50 flex items-center lg:hidden"
+        className="glass-btn fixed top-5 right-5 z-50 flex items-center lg:hidden"
         style={{
           position: "fixed",
           minWidth: "88px",
@@ -105,7 +105,8 @@ export default function Navigation() {
           WebkitBackdropFilter: BACKDROP,
           backgroundColor: pillBg,
           border: "1px solid var(--glass-border)",
-          boxShadow: "inset 0 1px 0 var(--glass-highlight), 0 8px 24px rgba(0,0,0,0.18)",
+          boxShadow:
+            "inset 0 1px 0 var(--glass-highlight), inset 0 -6px 14px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0,0,0,0.18)",
           padding: "5px 6px 5px 14px",
           color: "var(--fg-primary)",
           fontFamily: "var(--font-geist-mono)",
@@ -113,7 +114,8 @@ export default function Navigation() {
           fontWeight: 600,
           letterSpacing: "0.04em",
           textTransform: "uppercase",
-          transition: "background-color 300ms cubic-bezier(0.22, 1, 0.36, 1)",
+          transition:
+            "transform 180ms cubic-bezier(0.22, 1, 0.36, 1), background-color 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       >
         <span>{menuOpen ? "Close" : "Menu"}</span>

@@ -13,15 +13,15 @@
   --border-strong: rgba(245, 245, 240, 0.16);
   --nav-height: 72px;
 
-  /* Shared glass tokens */
-  --glass-bg: rgba(13, 15, 16, 0.48);
-  --glass-bg-hover: rgba(22, 24, 25, 0.62);
-  --glass-bg-scrolled: rgba(13, 15, 16, 0.76);
+  /* Shared liquid-glass tokens (per liquid-glass-frontend skill) */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-bg-hover: rgba(255, 255, 255, 0.16);
+  --glass-bg-scrolled: rgba(13, 15, 16, 0.78);
   --glass-border: rgba(255, 255, 255, 0.22);
-  --glass-border-hover: rgba(255, 255, 255, 0.4);
-  --glass-highlight: rgba(255, 255, 255, 0.1);
-  --glass-highlight-hover: rgba(255, 255, 255, 0.17);
-  --glass-blur: blur(24px) saturate(145%);
+  --glass-border-hover: rgba(255, 255, 255, 0.44);
+  --glass-highlight: rgba(255, 255, 255, 0.32);
+  --glass-highlight-hover: rgba(255, 255, 255, 0.48);
+  --glass-blur: blur(28px) saturate(190%);
 
   /* Admin-specific tokens */
   --admin-sidebar-width: 240px;
@@ -46,16 +46,79 @@ html[data-theme="light"] {
   --fg-subtle: #96968e;
   --border: rgba(10, 10, 10, 0.09);
   --border-strong: rgba(10, 10, 10, 0.2);
-  --glass-bg: rgba(241, 240, 233, 0.72);
-  --glass-bg-hover: rgba(255, 255, 250, 0.84);
-  --glass-bg-scrolled: rgba(241, 240, 233, 0.9);
-  --glass-border: rgba(10, 10, 10, 0.2);
-  --glass-border-hover: rgba(10, 10, 10, 0.36);
-  --glass-highlight: rgba(255, 255, 255, 0.42);
-  --glass-highlight-hover: rgba(255, 255, 255, 0.62);
+  --glass-bg: rgba(255, 255, 255, 0.52);
+  --glass-bg-hover: rgba(255, 255, 255, 0.74);
+  --glass-bg-scrolled: rgba(241, 240, 233, 0.88);
+  --glass-border: rgba(10, 10, 10, 0.16);
+  --glass-border-hover: rgba(10, 10, 10, 0.32);
+  --glass-highlight: rgba(255, 255, 255, 0.65);
+  --glass-highlight-hover: rgba(255, 255, 255, 0.85);
+  --glass-blur: blur(28px) saturate(210%);
   --admin-bg: #ecebe4;
   --admin-sidebar-bg: #e4e2d9;
   --admin-input-border: rgba(10, 10, 10, 0.18);
+}
+
+/* ===== liquid glass buttons (liquid-glass-frontend) ===== */
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--fg-primary);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -8px 18px rgba(0, 0, 0, 0.12),
+    0 12px 30px -12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition:
+    background-color 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.44);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.48),
+    inset 0 -8px 18px rgba(0, 0, 0, 0.10),
+    0 16px 36px -10px rgba(0, 0, 0, 0.65);
+}
+
+.glass-btn:active {
+  transform: scale(0.97);
+}
+
+/* Primary luminous liquid glass (brand tinted with neon lime highlight) */
+.glass-btn--solid,
+.glass-btn--clay {
+  background: rgba(212, 255, 62, 0.88);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(212, 255, 62, 0.65);
+  color: #080808;
+  box-shadow:
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.85),
+    inset 0 -8px 18px rgba(0, 0, 0, 0.14),
+    0 14px 34px -10px rgba(212, 255, 62, 0.45);
+}
+
+.glass-btn--solid:hover,
+.glass-btn--clay:hover {
+  background: rgba(228, 255, 95, 0.96);
+  border-color: rgba(212, 255, 62, 0.95);
+  box-shadow:
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.95),
+    inset 0 -8px 18px rgba(0, 0, 0, 0.12),
+    0 18px 44px -8px rgba(212, 255, 62, 0.65);
 }
 
 .theme-toggle {
@@ -70,6 +133,11 @@ html[data-theme="light"] {
   color: var(--fg-primary);
   cursor: pointer;
   backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.1),
+    0 8px 24px -8px rgba(0, 0, 0, 0.4);
   font-family: var(--font-geist-mono);
   font-size: 12px;
   font-weight: 700;
@@ -78,11 +146,33 @@ html[data-theme="light"] {
   transition:
     background-color 250ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
     color 250ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.theme-toggle:hover { background: var(--glass-bg-hover); border-color: var(--glass-border-hover); }
-.theme-toggle-icon { display: grid; width: 25px; height: 25px; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--fg-primary) 9%, transparent); }
+.theme-toggle:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight-hover),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.08),
+    0 12px 28px -6px rgba(0, 0, 0, 0.55);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+
+.theme-toggle-icon {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--fg-primary) 9%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
 
 html[data-theme="dark"] .booking-theme-surface {
   background: var(--bg-base) !important;
