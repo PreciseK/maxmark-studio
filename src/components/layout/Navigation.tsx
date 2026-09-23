@@ -50,7 +50,7 @@ export default function Navigation() {
     <>
       <nav
         aria-label="Primary navigation"
-        className="glass-btn fixed z-50 hidden items-center lg:flex"
+        className="fixed z-50 hidden items-center lg:flex"
         style={{
           position: "fixed",
           top: "24px",
@@ -92,7 +92,7 @@ export default function Navigation() {
         aria-label={menuOpen ? "Close menu" : "Open menu"}
         aria-expanded={menuOpen}
         aria-controls="mobile-navigation"
-        className="glass-btn fixed top-5 right-5 z-50 flex items-center lg:hidden"
+        className="fixed top-5 right-5 z-50 flex items-center lg:!hidden"
         style={{
           position: "fixed",
           minWidth: "88px",
@@ -113,6 +113,8 @@ export default function Navigation() {
           fontWeight: 600,
           letterSpacing: "0.04em",
           textTransform: "uppercase",
+          cursor: "pointer",
+          userSelect: "none",
           transition:
             "transform 180ms cubic-bezier(0.22, 1, 0.36, 1), background-color 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}

@@ -97,6 +97,18 @@ html[data-theme="light"] {
   transform: scale(0.97);
 }
 
+.glass-btn.hidden,
+.glass-btn.lg\:hidden {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .glass-btn.lg\:hidden,
+  .lg\:hidden {
+    display: none !important;
+  }
+}
+
 /* All buttons unified under pure transparent standard liquid glass */
 .glass-btn--solid,
 .glass-btn--clay {
